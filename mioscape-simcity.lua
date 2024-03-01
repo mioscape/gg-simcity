@@ -95,10 +95,9 @@ function Arm64v8a()
         if MIO == 1 then
             MENU = gg.choice({
                 "\n[Max City Storage]\n", "\n[Max Omega Storage]\n", "\n[Max Neo Bank]\n",
-                "\n[Small Factory to Nano Factory]\n",
                 "\n[Experience from Metal]\n", "\n[Omega Services]\n", "\n[Unlock Neo Mall]\n", "\n[Unlock Air Port]\n",
                 "\n[Unlock Vu's Tower Max Level]\n", "\n[Unlock Cargo Ship]\n", "\n[Unlock Vu's Pass]\n",
-                "\n[Unlock Mayor Pass]\n", "\n[Upgrade Shop Building]\n", "\n[Small Fire Station to Maxis Manor]\n",
+                "\n[Unlock Mayor Pass]\n", "\n[Upgrade Shop Building]\n",
                 "\n[Instant Production Time & Exclude Item Requirement]\n",
                 "\n[Back]\n"
             }, nil, "")
@@ -116,46 +115,39 @@ function Arm64v8a()
                     Arm64v8a)
             end
             if MENU == 4 then
-                SFToNF()
-            end
-            if MENU == 5 then
                 ExpfromMetal()
             end
-            if MENU == 6 then
+            if MENU == 5 then
                 Alert(
                     "Script ini akan mengubah\nWind Power Plant > OMEGA Power Plant\nBasic Water Tower > OMEGA Water Tower\nSmall Sewage Outflow Pipe > OMEGA Sewage Treatment\nSmall Garbare Dump > OMEGA Recycling Center",
                     "Next", "Cancel", OmegaServices, Arm64v8a)
             end
-            if MENU == 7 then
+            if MENU == 6 then
                 NeoMall()
             end
-            if MENU == 8 then
+            if MENU == 7 then
                 AirPort()
             end
-            if MENU == 9 then
+            if MENU == 8 then
                 VuTower()
             end
-            if MENU == 10 then
+            if MENU == 9 then
                 CargoShip()
             end
-            if MENU == 11 then
+            if MENU == 10 then
                 VuPass()
             end
-            if MENU == 12 then
+            if MENU == 11 then
                 Alert("Script ini akan membuat point Plumbob menjadi Mines (-)", "Next", "Cancel", MayorPass, Arm64v8a)
             end
-            if MENU == 13 then
+            if MENU == 12 then
                 UpgradeShopLevel()
             end
-            if MENU == 14 then
-                Alert("Pastikan Small Fire Station sudah dibangun", "Next",
-                    "Cancel", MaxisManor, Arm64v8a)
-            end
-            if MENU == 15 then
+            if MENU == 13 then
                 InstantProductionTime()
                 ExcludeItemRequirement()
             end
-            if MENU == 16 then
+            if MENU == 14 then
                 Main()
             end
         end
@@ -266,8 +258,10 @@ end
 function OmegaServices()
     local OmegaServicesCheckbox = gg.prompt(
         { "Wind Power Plant > OMEGA Power Plant", "Basic Water Tower > OMEGA Water Tower",
-            "Small Sewage Outflow Pipe > OMEGA Sewage Treatment", "Small Garbage Dump > OMEGA Recycling Center" }, nil,
-        { "checkbox", "checkbox", "checkbox", "checkbox" })
+            "Small Sewage Outflow Pipe > OMEGA Sewage Treatment", "Small Garbage Dump > OMEGA Recycling Center",
+            "Small Fire Station > Maxis Manor", "Small Factory > Nano Factory" },
+        { [1] = true, [2] = true, [3] = true, [4] = true, [5] = true, [6] = true },
+        { [1] = "checkbox", [2] = "checkbox", [3] = "checkbox", [4] = "checkbox", [5] = "checkbox", [6] = "checkbox" })
     if OmegaServicesCheckbox == nil then
         gg.toast("Canceled")
         Arm64v8a()
