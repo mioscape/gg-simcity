@@ -264,27 +264,39 @@ function ExpfromMetal()
 end
 
 function OmegaServices()
-    gg.clearResults()
-    gg.searchNumber("751144117", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
-    gg.getResults(100)
-    gg.editAll(" -857301703 ", gg.TYPE_DWORD)
-
-    gg.clearResults()
-    gg.searchNumber(" 139346164 ", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
-    gg.getResults(100)
-    gg.editAll(" -1257426322 ", gg.TYPE_DWORD)
-
-    gg.clearResults()
-    gg.searchNumber(" 182280403 ", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
-    gg.getResults(100)
-    gg.editAll(" -212043960 ", gg.TYPE_DWORD)
-
-    gg.clearResults()
-    gg.searchNumber(" -741284489 ", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
-    gg.getResults(100)
-    gg.editAll(" -535421151 ", gg.TYPE_DWORD)
-    gg.clearResults()
-    gg.toast("Wind Power Plant, Basic Water Tower, Small Sewage Outflow Pipe, Small Garbare Dump Changed to OMEGA")
+    local OmegaServicesCheckbox = gg.prompt(
+        { "Wind Power Plant > OMEGA Power Plant", "Basic Water Tower > OMEGA Water Tower",
+            "Small Sewage Outflow Pipe > OMEGA Sewage Treatment", "Small Garbage Dump > OMEGA Recycling Center" }, nil,
+        { "checkbox", "checkbox", "checkbox", "checkbox" })
+    if OmegaServicesCheckbox == nil then
+        gg.toast("Canceled")
+        Arm64v8a()
+    else
+        if OmegaServicesCheckbox[1] then
+            gg.clearResults()
+            gg.searchNumber("751144117", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
+            gg.getResults(100)
+            gg.editAll(" -857301703 ", gg.TYPE_DWORD)
+        end
+        if OmegaServicesCheckbox[2] then
+            gg.clearResults()
+            gg.searchNumber(" 139346164 ", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
+            gg.getResults(100)
+            gg.editAll(" -1257426322 ", gg.TYPE_DWORD)
+        end
+        if OmegaServicesCheckbox[3] then
+            gg.clearResults()
+            gg.searchNumber(" 182280403 ", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
+            gg.getResults(100)
+            gg.editAll(" -212043960 ", gg.TYPE_DWORD)
+        end
+        if OmegaServicesCheckbox[4] then
+            gg.clearResults()
+            gg.searchNumber(" -741284489 ", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
+            gg.getResults(100)
+            gg.editAll(" -535421151 ", gg.TYPE_DWORD)
+        end
+    end
     gg.sleep(2000)
     gg.toast("Please Go To Daniel's City")
 end
