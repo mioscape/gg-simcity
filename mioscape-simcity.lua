@@ -41,8 +41,8 @@ function GGPrompt(title)
     return (input)
 end
 
+MIO = 1
 function Main()
-    MIO = 1
     MENU = gg.choice({
         "\n[arm64-v8a | 64bit]\n", "\n[armebi-v7a | 32bit]\n", "\n[Exit]\n"
     }, nil, ScriptDescription)
@@ -60,8 +60,8 @@ end
 
 -- arm64-v8a | 64bit Start
 
+MIO = 1
 function Arm64v8a()
-    MIO = 1
     MENU = gg.choice({
         "\n[Max City Storage]\n", "\n[Max Omega Storage]\n", "\n[Max Neo Bank]\n",
         "\n[Small Factory to Nano Factory]\n",
