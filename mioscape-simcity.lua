@@ -101,7 +101,7 @@ function Arm64v8a()
             if MENU == 5 then
                 ExpfromMetal()
             end
-            if MENU == 5 then
+            if MENU == 6 then
                 Main()
             end
         end
