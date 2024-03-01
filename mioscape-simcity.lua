@@ -1,4 +1,4 @@
-local ScriptDescription = "Support SimCity BuildIt 1.53.1.121316 | Mioscape SimCity 0.2-beta"
+local ScriptDescription = "Support SimCity BuildIt 1.53.1.121316 | Mioscape SimCity 0.5-beta"
 
 local FactoryValue = "-1935981107"
 local MAXIS = "925375395"
