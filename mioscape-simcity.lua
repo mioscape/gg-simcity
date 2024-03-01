@@ -1,4 +1,7 @@
-local ScriptDescription = "[SimCity BuildIt 1.53.1.121316 | Mioscape SimCity 0.7.1-beta]"
+local ArchInfo64 = gg.getTargetInfo()["x64"]
+if ArchInfo64 == false then ArchInfoResult = 32 end
+if ArchInfo64 == true then ArchInfoResult = 64 end
+local ScriptDescription = "[SimCity BuildIt 1.53.1.121316 " .. ArchInfoResult .. " bit | Mioscape SimCity 0.7.1-beta]"
 
 local FactoryValue = "-1935981107"
 local MAXIS = "925375395"
