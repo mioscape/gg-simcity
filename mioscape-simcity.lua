@@ -218,3 +218,14 @@ function Armebiv7a()
 end
 
 -- armebi-v7a | 32bit End
+
+
+while true do
+    if gg.isVisible(true) then
+        MIO = 1
+        gg.setVisible(false)
+    end
+    if MIO == 1 then
+        Main()
+    end
+end
