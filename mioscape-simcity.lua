@@ -1,3 +1,6 @@
+local ScriptVersion = "0.1-beta"
+local GameVersion = "1.53.1.121316"
+
 local PABRIK = "-1935981107"
 local MAXIS = "925375395"
 local PASSVU = "-7995824390300544013"
@@ -48,7 +51,7 @@ function Main()
         if MIO == 1 then
             MENU = gg.choice({
                 "\n[arm64-v8a | 64bit]\n", "\n[armebi-v7a | 32bit]\n", "\n[Exit]\n"
-            }, nil, "")
+            }, nil, "[Support SimCity BuildIt " + GameVersion + " | Mioscape SimCity " + ScriptVersion + "]")
             if MENU == nil then
                 gg.setVisible(true)
                 MIO = 1
