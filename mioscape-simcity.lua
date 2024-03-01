@@ -251,9 +251,8 @@ function OmegaServices()
         { "\n[Wind Power Plant > OMEGA Power Plant]\n", "\n[Basic Water Tower > OMEGA Water Tower]\n",
             "\n[Small Sewage Outflow Pipe > OMEGA Sewage Treatment]\n",
             "\n[Small Garbage Dump > OMEGA Recycling Center]\n",
-            "\n[Small Fire Station > Maxis Manor]\n", "\n[Small Factory > Nano Factory]\n" },
-        { [1] = true, [2] = true, [3] = true, [4] = true, [5] = true, [6] = true },
-        { [1] = "checkbox", [2] = "checkbox", [3] = "checkbox", [4] = "checkbox", [5] = "checkbox", [6] = "checkbox" })
+            "\n[Small Fire Station > Maxis Manor]\n", "\n[Small Factory > Nano Factory]\n" }, nil,
+        { "checkbox", "checkbox", "checkbox", "checkbox", "checkbox", "checkbox" })
     if OmegaServicesCheckbox == nil then
         gg.toast("Canceled")
         Arm64v8a()
