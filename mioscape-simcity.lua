@@ -42,62 +42,50 @@ function GGPrompt(title)
 end
 
 function Main()
-    while true do
-        if gg.isVisible(true) then
-            MIO = 1
-            gg.setVisible(false)
-        end
-        if MIO == 1 then
-            MENU = gg.choice({
-                "\n[arm64-v8a | 64bit]\n", "\n[armebi-v7a | 32bit]\n", "\n[Exit]\n"
-            }, nil, ScriptDescription)
-            if MENU == 1 then
-                Arm64v8a()
-            end
-            if MENU == 2 then
-                Armebiv7a()
-            end
-            if MENU == 3 then
-                os.exit()
-            end
-        end
+    MIO = 1
+    MENU = gg.choice({
+        "\n[arm64-v8a | 64bit]\n", "\n[armebi-v7a | 32bit]\n", "\n[Exit]\n"
+    }, nil, ScriptDescription)
+    if MENU == 1 then
+        Arm64v8a()
     end
+    if MENU == 2 then
+        Armebiv7a()
+    end
+    if MENU == 3 then
+        os.exit()
+    end
+    MIO = -1
 end
 
 -- arm64-v8a | 64bit Start
 
 function Arm64v8a()
-    while true do
-        if gg.isVisible(true) then
-            MIO = 1
-            gg.setVisible(false)
-        end
-        if MIO == 1 then
-            MENU = gg.choice({
-                "\n[Max City Storage]\n", "\n[Max Omega Storage]\n", "\n[Max Neo Bank]\n",
-                "\n[Small Factory to Nano Factory]\n",
-                "\n[Experience from Metal]\n", "\n[Back]\n"
-            }, nil, "")
-            if MENU == 1 then
-                CityStorage()
-            end
-            if MENU == 2 then
-                OmegaStorage()
-            end
-            if MENU == 3 then
-                NeoBank()
-            end
-            if MENU == 4 then
-                SFtoNF()
-            end
-            if MENU == 5 then
-                ExpfromMetal()
-            end
-            if MENU == 6 then
-                Main()
-            end
-        end
+    MIO = 1
+    MENU = gg.choice({
+        "\n[Max City Storage]\n", "\n[Max Omega Storage]\n", "\n[Max Neo Bank]\n",
+        "\n[Small Factory to Nano Factory]\n",
+        "\n[Experience from Metal]\n", "\n[Back]\n"
+    }, nil, "")
+    if MENU == 1 then
+        CityStorage()
     end
+    if MENU == 2 then
+        OmegaStorage()
+    end
+    if MENU == 3 then
+        NeoBank()
+    end
+    if MENU == 4 then
+        SFtoNF()
+    end
+    if MENU == 5 then
+        ExpfromMetal()
+    end
+    if MENU == 6 then
+        Main()
+    end
+    MIO = -1
 end
 
 function CityStorage()
