@@ -51,10 +51,6 @@ function Main()
             MENU = gg.choice({
                 "\n[arm64-v8a | 64bit]\n", "\n[armebi-v7a | 32bit]\n", "\n[Exit]\n"
             }, nil, ScriptDescription)
-            if MENU == nil then
-                gg.setVisible(true)
-                MIO = 1
-            end
             if MENU == 1 then
                 Arm64v8a()
             end
@@ -82,10 +78,6 @@ function Arm64v8a()
                 "\n[Small Factory to Nano Factory]\n",
                 "\n[Experience from Metal]\n", "\n[Back]\n"
             }, nil, "")
-            if MENU == nil then
-                gg.setVisible(true)
-                MIO = 1
-            end
             if MENU == 1 then
                 CityStorage()
             end
