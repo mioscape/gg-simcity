@@ -43,7 +43,7 @@ end
 
 function Main()
     while true do
-        if gg.isVisible() then
+        if gg.isVisible(true) then
             MIO = 1
             gg.setVisible(false)
         end
@@ -72,7 +72,7 @@ end
 
 function Arm64v8a()
     while true do
-        if gg.isVisible() then
+        if gg.isVisible(true) then
             MIO = 1
             gg.setVisible(false)
         end
