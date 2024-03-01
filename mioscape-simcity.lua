@@ -40,6 +40,19 @@ function GGPrompt(title)
     Prompt = gg.prompt({
         title
     }, { "" }, { "number" })
+
+    if Prompt == nil then
+        gg.toast("Canceled")
+        Arm64v8a()
+    elseif Prompt[1] == "" then
+        gg.toast("Canceled")
+        Arm64v8a()
+    elseif Prompt[1] == "0" then
+        gg.toast("Canceled")
+        Arm64v8a()
+    else
+        return Prompt[1]
+    end
 end
 
 function Alert(message, trueButton, falseButton, trueFunction, falseFunction)
