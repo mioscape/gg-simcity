@@ -1,4 +1,4 @@
-local ScriptDescription = "Support SimCity BuildIt 1.53.1.121316 | Mioscape SimCity 0.5-beta"
+local ScriptDescription = "[SimCity BuildIt 1.53.1.121316 | Mioscape SimCity 0.7.1-beta]"
 
 local FactoryValue = "-1935981107"
 local MAXIS = "925375395"
@@ -101,7 +101,7 @@ function Arm64v8a()
                 "\n[Unlock Mayor Pass]\n", "\n[Upgrade Shop Building]\n",
                 "\n[Instant Production Time & Exclude Item Requirement]\n",
                 "\n[Back]\n"
-            }, nil, "")
+            }, nil, ScriptDescription)
             if MENU == nil then else
                 if MENU == 1 then
                     Alert("Pastikan City Storage masih di angka 40 (termasuk Bangunan City Storage)", "Next", "Cancel",
