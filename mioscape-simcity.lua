@@ -62,21 +62,22 @@ function Main()
             MENU = gg.choice({
                 "\n[arm64-v8a | 64bit]\n", "\n[armebi-v7a | 32bit]\n", "\n[Back to Loader]\n"
             }, nil, ScriptDescription)
-            if MENU == nil then else end
-            if MENU == 1 then
-                Arm64v8a()
-            end
-            if MENU == 2 then
-                Armebiv7a()
-            end
-            if MENU == 3 then
-                TG = gg.makeRequest(
-                        'https://ihya.dev/gg-loader/mioscape-loader.lua')
-                    .content
-                if not TG then
-                    os.exit()
-                else
-                    pcall(load(TG))
+            if MENU == nil then else
+                if MENU == 1 then
+                    Arm64v8a()
+                end
+                if MENU == 2 then
+                    Armebiv7a()
+                end
+                if MENU == 3 then
+                    TG = gg.makeRequest(
+                            'https://ihya.dev/gg-loader/mioscape-loader.lua')
+                        .content
+                    if not TG then
+                        os.exit()
+                    else
+                        pcall(load(TG))
+                    end
                 end
             end
         end
@@ -101,54 +102,54 @@ function Arm64v8a()
                 "\n[Instant Production Time & Exclude Item Requirement]\n",
                 "\n[Back]\n"
             }, nil, "")
-            if MENU == nil then else end
-            if MENU == 1 then
-                Alert("Pastikan City Storage masih di angka 40 (termasuk Bangunan City Storage)", "Next", "Cancel",
-                    CityStorage, Arm64v8a)
-            end
-            if MENU == 2 then
-                Alert("Pastikan Omega Storage masih di angka 15 (termasuk Bangunan Omega Storage)", "Next", "Cancel",
-                    OmegaStorage, Arm64v8a)
-            end
-            if MENU == 3 then
-                Alert("Pastikan Neo Bank masih di angka 8000 (termasuk Bangunan Neo Bank)", "Next", "Cancel", NeoBank,
-                    Arm64v8a)
-            end
-            if MENU == 4 then
-                ExpfromMetal()
-            end
-            if MENU == 5 then
-                Alert(
-                    "Script ini akan mengubah\nWind Power Plant > OMEGA Power Plant\nBasic Water Tower > OMEGA Water Tower\nSmall Sewage Outflow Pipe > OMEGA Sewage Treatment\nSmall Garbare Dump > OMEGA Recycling Center",
-                    "Next", "Cancel", OmegaServices, Arm64v8a)
-            end
-            if MENU == 6 then
-                NeoMall()
-            end
-            if MENU == 7 then
-                AirPort()
-            end
-            if MENU == 8 then
-                VuTower()
-            end
-            if MENU == 9 then
-                CargoShip()
-            end
-            if MENU == 10 then
-                VuPass()
-            end
-            if MENU == 11 then
-                Alert("Script ini akan membuat point Plumbob menjadi Mines (-)", "Next", "Cancel", MayorPass, Arm64v8a)
-            end
-            if MENU == 12 then
-                UpgradeShopLevel()
-            end
-            if MENU == 13 then
-                InstantProductionTime()
-                ExcludeItemRequirement()
-            end
-            if MENU == 14 then
-                Main()
+            if MENU == nil then else
+                if MENU == 1 then
+                    Alert("Pastikan City Storage masih di angka 40 (termasuk Bangunan City Storage)", "Next", "Cancel",
+                        CityStorage, Arm64v8a)
+                end
+                if MENU == 2 then
+                    Alert("Pastikan Omega Storage masih di angka 15 (termasuk Bangunan Omega Storage)", "Next", "Cancel",
+                        OmegaStorage, Arm64v8a)
+                end
+                if MENU == 3 then
+                    Alert("Pastikan Neo Bank masih di angka 8000 (termasuk Bangunan Neo Bank)", "Next", "Cancel", NeoBank,
+                        Arm64v8a)
+                end
+                if MENU == 4 then
+                    ExpfromMetal()
+                end
+                if MENU == 5 then
+                    OmegaServices()
+                end
+                if MENU == 6 then
+                    NeoMall()
+                end
+                if MENU == 7 then
+                    AirPort()
+                end
+                if MENU == 8 then
+                    VuTower()
+                end
+                if MENU == 9 then
+                    CargoShip()
+                end
+                if MENU == 10 then
+                    VuPass()
+                end
+                if MENU == 11 then
+                    Alert("Script ini akan membuat point Plumbob menjadi Mines (-)", "Next", "Cancel", MayorPass,
+                        Arm64v8a)
+                end
+                if MENU == 12 then
+                    UpgradeShopLevel()
+                end
+                if MENU == 13 then
+                    InstantProductionTime()
+                    ExcludeItemRequirement()
+                end
+                if MENU == 14 then
+                    Main()
+                end
             end
         end
         MIO = -1
@@ -184,17 +185,6 @@ function NeoBank()
     gg.editAll("-741647361", gg.TYPE_DWORD)
     gg.clearResults()
     gg.toast("Neo Bank Maxed Out")
-    gg.sleep(2000)
-    gg.toast("Please Go To Daniel's City")
-end
-
-function SFToNF()
-    gg.clearResults()
-    gg.searchNumber("612373322", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
-    gg.getResults(100)
-    gg.editAll("734850349 ", gg.TYPE_DWORD)
-    gg.clearResults()
-    gg.toast("Small Factory to Nano Factory")
     gg.sleep(2000)
     gg.toast("Please Go To Daniel's City")
 end
@@ -252,14 +242,16 @@ function ExpfromMetal()
 
     gg.addListItems(tc);
     gg.setValues(tc);
-    gg.clearResults(); gg.clearList();
+    gg.clearResults();
+    gg.clearList();
 end
 
 function OmegaServices()
     local OmegaServicesCheckbox = gg.prompt(
-        { "Wind Power Plant > OMEGA Power Plant", "Basic Water Tower > OMEGA Water Tower",
-            "Small Sewage Outflow Pipe > OMEGA Sewage Treatment", "Small Garbage Dump > OMEGA Recycling Center",
-            "Small Fire Station > Maxis Manor", "Small Factory > Nano Factory" },
+        { "\n[Wind Power Plant > OMEGA Power Plant]\n", "\n[Basic Water Tower > OMEGA Water Tower]\n",
+            "\n[Small Sewage Outflow Pipe > OMEGA Sewage Treatment]\n",
+            "\n[Small Garbage Dump > OMEGA Recycling Center]\n",
+            "\n[Small Fire Station > Maxis Manor]\n", "\n[Small Factory > Nano Factory]\n" },
         { [1] = true, [2] = true, [3] = true, [4] = true, [5] = true, [6] = true },
         { [1] = "checkbox", [2] = "checkbox", [3] = "checkbox", [4] = "checkbox", [5] = "checkbox", [6] = "checkbox" })
     if OmegaServicesCheckbox == nil then
@@ -271,24 +263,48 @@ function OmegaServices()
             gg.searchNumber("751144117", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
             gg.getResults(100)
             gg.editAll(" -857301703 ", gg.TYPE_DWORD)
+            gg.clearResults()
+            gg.toast("Wind Power Plant > OMEGA Power Plant")
         end
         if OmegaServicesCheckbox[2] then
             gg.clearResults()
             gg.searchNumber(" 139346164 ", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
             gg.getResults(100)
             gg.editAll(" -1257426322 ", gg.TYPE_DWORD)
+            gg.clearResults()
+            gg.toast("Basic Water Tower > OMEGA Water Tower")
         end
         if OmegaServicesCheckbox[3] then
             gg.clearResults()
             gg.searchNumber(" 182280403 ", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
             gg.getResults(100)
             gg.editAll(" -212043960 ", gg.TYPE_DWORD)
+            gg.clearResults()
+            gg.toast("Small Sewage Outflow Pipe > OMEGA Sewage Treatment")
         end
         if OmegaServicesCheckbox[4] then
             gg.clearResults()
-            gg.searchNumber(" -741284489 ", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
+            gg.searchNumber("-741284489", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
             gg.getResults(100)
-            gg.editAll(" -535421151 ", gg.TYPE_DWORD)
+            gg.editAll("-535421151", gg.TYPE_DWORD)
+            gg.clearResults()
+            gg.toast("Small Garbage Dump > OMEGA Recycling Center")
+        end
+        if OmegaServicesCheckbox[5] then
+            gg.clearResults()
+            gg.searchNumber("583140736", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
+            gg.getResults(100)
+            gg.editAll("925375395", gg.TYPE_DWORD)
+            gg.clearResults()
+            gg.toast("Small Fire Station > Maxis Manor")
+        end
+        if OmegaServicesCheckbox[6] then
+            gg.clearResults()
+            gg.searchNumber("612373322", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
+            gg.getResults(100)
+            gg.editAll("734850349 ", gg.TYPE_DWORD)
+            gg.clearResults()
+            gg.toast("Small Factory > Nano Factory")
         end
     end
     gg.sleep(2000)
@@ -441,15 +457,6 @@ function UpgradeShopLevel()
     gg.clearResults()
 
     gg.toast("Shop Building Upgraded")
-end
-
-function MaxisManor()
-    gg.clearResults()
-    gg.searchNumber("583140736", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
-    gg.getResults(100)
-    gg.editAll("925375395", gg.TYPE_DWORD)
-    gg.clearResults()
-    gg.toast("Small Fire Station Changed to Maxis Manor")
 end
 
 function InstantProductionTime()
