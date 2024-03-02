@@ -233,6 +233,7 @@ function ExpfromMetal()
             gg.clearResults();
             gg.clearList();
             gg.toast("Experience From Metal Reset");
+            gg.hideUiButton()
         end
     end
 end
