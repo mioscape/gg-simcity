@@ -217,17 +217,17 @@ function ExpfromMetal()
     gg.setValues(t);
     gg.toast("Experience From Metal Changed");
 
-    gg.sleep(5000);
-    local tc = gg.getListItems(t);
-    gg.clearList();
-    for i, v in ipairs(tc) do
-        v.value = "0";
-    end;
+    -- gg.sleep(5000);
+    -- local tc = gg.getListItems(t);
+    -- gg.clearList();
+    -- for i, v in ipairs(tc) do
+    --     v.value = "0";
+    -- end;
 
-    gg.addListItems(tc);
-    gg.setValues(tc);
-    gg.clearResults();
-    gg.clearList();
+    -- gg.addListItems(tc);
+    -- gg.setValues(tc);
+    -- gg.clearResults();
+    -- gg.clearList();
 end
 
 function OmegaServices()
