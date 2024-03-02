@@ -8,15 +8,15 @@ local VuPassValue = "-7995824390300544013"
 local MayorPassValue = "-7992622555426941375"
 
 local MaxCityStorageMenuAlert =
-"Pastikan City Storage masih di angka 40 (termasuk Bangunan City Storage)\n\nMake sure City Storage is still at 40 (including City Storage Buildings)"
+"Pastikan City Storage masih di angka 40 (termasuk Bangunan City Storage)\n-----\nMake sure City Storage is still at 40 (including City Storage Buildings)"
 local MaxOmegaStorageMenuAlert =
-"Pastikan Omega Storage masih di angka 15 (termasuk Bangunan Omega Storage)\n\nMake sure Omega Storage is still at 15 (including Omega Storage Buildings)"
+"Pastikan Omega Storage masih di angka 15 (termasuk Bangunan Omega Storage)\n-----\nMake sure Omega Storage is still at 15 (including Omega Storage Buildings)"
 local MaxNeoBankMenuAlert =
-"Pastikan Neo Bank masih di angka 8000 (termasuk Bangunan Neo Bank)\n\nMake sure Neo Bank is still at 8000 (including Neo Bank Buildings)"
+"Pastikan Neo Bank masih di angka 8000 (termasuk Bangunan Neo Bank)\n-----\nMake sure Neo Bank is still at 8000 (including Neo Bank Buildings)"
 local ExpfromMetalMenuAlert =
-"Experience dari Metal akan berubah sampai tombol bertulisan Sx ditekan\n\nExperience from Metal will change until the button labeled Sx is pressed"
+"Experience dari Metal akan berubah sampai tombol bertulisan Sx ditekan\n-----\nExperience from Metal will change until the button labeled Sx is pressed"
 local MayorPassMenuAlert =
-"Script ini akan membuat point Plumbob menjadi Mines (-)\n\nThis script will make the Plumbob point into Mines (-)"
+"Script ini akan membuat point Plumbob menjadi Mines (-)\n-----\nThis script will make the Plumbob point into Mines (-)"
 
 function GGPrompt(title)
     Prompt = gg.prompt({
