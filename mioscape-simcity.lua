@@ -221,7 +221,7 @@ function ExpfromMetal()
     gg.showUiButton()
     while true do
         if gg.isClickedUiButton() then
-            gg.sleep(60000);
+            -- gg.sleep(60000);
             local tc = gg.getListItems(t);
             gg.clearList();
             for i, v in ipairs(tc) do
