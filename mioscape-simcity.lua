@@ -218,19 +218,23 @@ function ExpfromMetal()
     gg.addListItems(t);
     gg.setValues(t);
     gg.toast("Experience From Metal Changed");
+    gg.showUiButton()
+    while true do
+        if gg.isClickedUiButton() then
+            gg.sleep(60000);
+            local tc = gg.getListItems(t);
+            gg.clearList();
+            for i, v in ipairs(tc) do
+                v.value = "0";
+            end;
 
-    gg.sleep(60000);
-    local tc = gg.getListItems(t);
-    gg.clearList();
-    for i, v in ipairs(tc) do
-        v.value = "0";
-    end;
-
-    gg.addListItems(tc);
-    gg.setValues(tc);
-    gg.clearResults();
-    gg.clearList();
-    gg.toast("Experience From Metal Reset");
+            gg.addListItems(tc);
+            gg.setValues(tc);
+            gg.clearResults();
+            gg.clearList();
+            gg.toast("Experience From Metal Reset");
+        end
+    end
 end
 
 function OmegaServices()
