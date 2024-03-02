@@ -100,7 +100,7 @@ function Arm64v8a()
                         Arm64v8a)
                 end
                 if MENU == 4 then
-                    Alert("Experience dari Metal akan berubah 1 menit kedepan setelah diaktifkan", "Next", "Cancel",
+                    Alert("Experience dari Metal akan berubah sampai tombol bertulisan Sx ditekan", "Next", "Cancel",
                         ExpfromMetal,
                         Arm64v8a)
                 end
@@ -221,7 +221,6 @@ function ExpfromMetal()
     gg.showUiButton()
     while true do
         if gg.isClickedUiButton() then
-            -- gg.sleep(60000);
             local tc = gg.getListItems(t);
             gg.clearList();
             for i, v in ipairs(tc) do
