@@ -7,6 +7,17 @@ local FactoryValue = "-1935981107"
 local VuPassValue = "-7995824390300544013"
 local MayorPassValue = "-7992622555426941375"
 
+local MaxCityStorageMenuAlert =
+"Pastikan City Storage masih di angka 40 (termasuk Bangunan City Storage)\n\nMake sure City Storage is still at 40 (including City Storage Buildings)"
+local MaxOmegaStorageMenuAlert =
+"Pastikan Omega Storage masih di angka 15 (termasuk Bangunan Omega Storage)\n\nMake sure Omega Storage is still at 15 (including Omega Storage Buildings)"
+local MaxNeoBankMenuAlert =
+"Pastikan Neo Bank masih di angka 8000 (termasuk Bangunan Neo Bank)\n\nMake sure Neo Bank is still at 8000 (including Neo Bank Buildings)"
+local ExpfromMetalMenuAlert =
+"Experience dari Metal akan berubah sampai tombol bertulisan Sx ditekan\n\nExperience from Metal will change until the button labeled Sx is pressed"
+local MayorPassMenuAlert =
+"Script ini akan membuat point Plumbob menjadi Mines (-)\n\nThis script will make the Plumbob point into Mines (-)"
+
 function GGPrompt(title)
     Prompt = gg.prompt({
         title
@@ -88,19 +99,19 @@ function Arm64v8a()
             }, nil, ScriptDescription)
             if MENU == nil then else
                 if MENU == 1 then
-                    Alert("Pastikan City Storage masih di angka 40 (termasuk Bangunan City Storage)", "Next", "Cancel",
+                    Alert(MaxCityStorageMenuAlert, "Next", "Cancel",
                         CityStorage, Arm64v8a)
                 end
                 if MENU == 2 then
-                    Alert("Pastikan Omega Storage masih di angka 15 (termasuk Bangunan Omega Storage)", "Next", "Cancel",
+                    Alert(MaxOmegaStorageMenuAlert, "Next", "Cancel",
                         OmegaStorage, Arm64v8a)
                 end
                 if MENU == 3 then
-                    Alert("Pastikan Neo Bank masih di angka 8000 (termasuk Bangunan Neo Bank)", "Next", "Cancel", NeoBank,
+                    Alert(MaxNeoBankMenuAlert, "Next", "Cancel", NeoBank,
                         Arm64v8a)
                 end
                 if MENU == 4 then
-                    Alert("Experience dari Metal akan berubah sampai tombol bertulisan Sx ditekan", "Next", "Cancel",
+                    Alert(ExpfromMetalMenuAlert, "Next", "Cancel",
                         ExpfromMetal,
                         Arm64v8a)
                 end
@@ -123,7 +134,7 @@ function Arm64v8a()
                     VuPass()
                 end
                 if MENU == 11 then
-                    Alert("Script ini akan membuat point Plumbob menjadi Mines (-)", "Next", "Cancel", MayorPass,
+                    Alert(MayorPassMenuAlert, "Next", "Cancel", MayorPass,
                         Arm64v8a)
                 end
                 if MENU == 12 then
@@ -231,7 +242,7 @@ function ExpfromMetal()
             gg.setValues(tc);
             gg.clearResults();
             gg.clearList();
-            gg.toast("Experience From Metal Reset");
+            gg.alert("Experience From Metal Reset");
             gg.hideUiButton()
         end
     end
