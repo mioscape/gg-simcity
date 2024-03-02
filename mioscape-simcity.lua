@@ -388,61 +388,82 @@ function MayorPass()
 end
 
 function UpgradeShopLevel()
-    gg.clearResults()
-    gg.clearList()
-    gg.searchNumber("960415804", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-    gg.getResults(200)
-    gg.editAll("105664762", gg.TYPE_DWORD)
-
-    gg.clearResults()
-    gg.searchNumber("-187177827", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-    gg.getResults(200)
-    gg.editAll("-690676293", gg.TYPE_DWORD)
-
-
-    gg.clearResults()
-    gg.searchNumber("2030607321", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-    gg.getResults(200)
-    gg.editAll("-1853924489", gg.TYPE_DWORD)
-
-
-    gg.clearResults()
-    gg.searchNumber("1444038310", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-    gg.getResults(200)
-    gg.editAll("-1684984028", gg.TYPE_DWORD)
-
-
-    gg.clearResults()
-    gg.searchNumber("-1603072541", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-    gg.getResults(200)
-    gg.editAll("-1221457599", gg.TYPE_DWORD)
-
-
-    gg.clearResults()
-    gg.searchNumber("271162441", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-    gg.getResults(200)
-    gg.editAll("-516045337", gg.TYPE_DWORD)
-
-
-    gg.clearResults()
-    gg.searchNumber("-1470979549", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-    gg.getResults(200)
-    gg.editAll("-134466175", gg.TYPE_DWORD)
-
-
-    gg.clearResults()
-    gg.searchNumber("-1568621139", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-    gg.getResults(200)
-    gg.editAll("-92005173", gg.TYPE_DWORD)
-
-
-    gg.clearResults()
-    gg.searchNumber("-278168705", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-    gg.getResults(200)
-    gg.editAll("2135220573", gg.TYPE_DWORD)
-    gg.clearResults()
-
-    gg.toast("Shop Building Upgraded")
+    local UpgradeShopLevelCheckbox = gg.prompt(
+        { "\n[Building Supplies Store]\n", "\n[Hardware Store]\n", "\n[Farmer's Market]\n", "\n[Furniture Store]\n",
+            "\n[Gardening Supplies Store]\n", "\n[Donut Shop]\n", "\n[Fashion Store]\n", "\n[Fast Food Restaurant]\n",
+            "\n[Home Appliances Store]\n" }, nil,
+        { "checkbox", "checkbox", "checkbox", "checkbox", "checkbox", "checkbox",
+            "checkbox", "checkbox", "checkbox" })
+    if UpgradeShopLevelCheckbox == nil then
+        gg.toast("Canceled")
+        Arm64v8a()
+    else
+        if UpgradeShopLevelCheckbox[1] then
+            gg.clearResults()
+            gg.clearList()
+            gg.searchNumber("960415804", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+            gg.getResults(200)
+            gg.editAll("105664762", gg.TYPE_DWORD)
+            gg.toast("Building Supplies Store Maxed Out")
+        end
+        if UpgradeShopLevelCheckbox[2] then
+            gg.clearResults()
+            gg.searchNumber("-187177827", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+            gg.getResults(200)
+            gg.editAll("-690676293", gg.TYPE_DWORD)
+            gg.toast("Hardware Store Maxed Out")
+        end
+        if UpgradeShopLevelCheckbox[3] then
+            gg.clearResults()
+            gg.searchNumber("2030607321", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+            gg.getResults(200)
+            gg.editAll("-1853924489", gg.TYPE_DWORD)
+            gg.toast("Farmer's Market Maxed Out")
+        end
+        if UpgradeShopLevelCheckbox[4] then
+            gg.clearResults()
+            gg.searchNumber("1444038310", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+            gg.getResults(200)
+            gg.editAll("-1684984028", gg.TYPE_DWORD)
+            gg.toast("Furniture Store Maxed Out")
+        end
+        if UpgradeShopLevelCheckbox[5] then
+            gg.clearResults()
+            gg.searchNumber("-1603072541", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+            gg.getResults(200)
+            gg.editAll("-1221457599", gg.TYPE_DWORD)
+            gg.toast("Gardening Supplies Store Maxed Out")
+        end
+        if UpgradeShopLevelCheckbox[6] then
+            gg.clearResults()
+            gg.searchNumber("271162441", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+            gg.getResults(200)
+            gg.editAll("-516045337", gg.TYPE_DWORD)
+            gg.toast("Donut Shop Maxed Out")
+        end
+        if UpgradeShopLevelCheckbox[7] then
+            gg.clearResults()
+            gg.searchNumber("-1470979549", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+            gg.getResults(200)
+            gg.editAll("-134466175", gg.TYPE_DWORD)
+            gg.toast("Fashion Store Maxed Out")
+        end
+        if UpgradeShopLevelCheckbox[8] then
+            gg.clearResults()
+            gg.searchNumber("-1568621139", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+            gg.getResults(200)
+            gg.editAll("-92005173", gg.TYPE_DWORD)
+            gg.toast("Fast Food Restaurant Maxed Out")
+        end
+        if UpgradeShopLevelCheckbox[9] then
+            gg.clearResults()
+            gg.searchNumber("-278168705", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+            gg.getResults(200)
+            gg.editAll("2135220573", gg.TYPE_DWORD)
+            gg.toast("Home Appliances Store Maxed Out")
+        end
+    end
+    gg.toast("Please Go To Daniel's City")
 end
 
 function InstantProductionTime()
