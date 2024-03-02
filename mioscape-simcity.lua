@@ -4,36 +4,8 @@ if ArchInfo64 == true then ArchInfoResult = 64 end
 local ScriptDescription = "[SimCity BuildIt 1.53.1.121316 " .. ArchInfoResult .. " bit | Mioscape SimCity 0.7.3-beta]"
 
 local FactoryValue = "-1935981107"
-local MAXIS = "925375395"
 local VuPassValue = "-7995824390300544013"
 local MayorPassValue = "-7992622555426941375"
-
-local TAMAN = "4635382469820688998"
-local ITEMOFFSET = "-3527480595996367819"
-local OFFSET1 = "0x60"
-local OFFSET2 = "0x40"
-local EDUKASI = "-1881032548"
-local HIBURAN = "-447372290"
-local PERJUDIAN = "-691412735"
-local TRANSPORT = "1813794920"
-local TERKENAL = "-113962678"
-local PANTAI = "-1999290445"
-local GUNUNG = "995463179"
-
-local RUMAH = "1522778650"
-local LATIN = "-537490833"
-local ART = "1920513178"
-local PARIS = "2050186616"
-local LONDON = "-1203406301"
-local OLD = "-1562421476"
-local TOKYO = "1493262871"
-local OMEGA = "-1430868908"
-
-local GREEN = "973877747"
-local CANYON = "-1528167776"
-local ISLAND = "-1220248775"
-local FROZEN = "-2038647854"
-local LIMINSTONE = "46404375"
 
 local Prompt
 local Alert
@@ -54,7 +26,7 @@ function GGPrompt(title)
         gg.toast("Canceled")
         Arm64v8a()
     else
-        return Prompt[1]
+        return (input)
     end
 end
 
