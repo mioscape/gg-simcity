@@ -38,7 +38,7 @@ function GGPrompt(title)
 end
 
 function Alert(message, trueButton, falseButton, trueFunction, falseFunction)
-    Alert = gg.alert(message, trueButton, falseButton)
+    local Alert = gg.alert(message, trueButton, falseButton)
     if Alert == 1 then
         trueFunction()
     end
