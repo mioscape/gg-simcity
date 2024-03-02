@@ -1,15 +1,11 @@
 local ArchInfo64 = gg.getTargetInfo()["x64"]
 if ArchInfo64 == false then ArchInfoResult = 32 end
 if ArchInfo64 == true then ArchInfoResult = 64 end
-local ScriptDescription = "[SimCity BuildIt 1.53.1.121316 " .. ArchInfoResult .. " bit | Mioscape SimCity 0.7.4-beta]"
+local ScriptDescription = "[SimCity BuildIt 1.53.1.121316 " .. ArchInfoResult .. " bit | Mioscape SimCity 0.7.5-beta]"
 
 local FactoryValue = "-1935981107"
 local VuPassValue = "-7995824390300544013"
 local MayorPassValue = "-7992622555426941375"
-
-local Prompt
-local Alert
-
 
 function GGPrompt(title)
     Prompt = gg.prompt({
@@ -26,7 +22,7 @@ function GGPrompt(title)
         gg.toast("Canceled")
         Arm64v8a()
     else
-        return (input)
+        return Prompt[1]
     end
 end
 
