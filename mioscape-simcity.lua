@@ -349,10 +349,11 @@ function OmegaServices()
             OmegaServicesCheckbox[6] == false
         then
             gg.alert("Tick at least one checkbox")
+        else
+            gg.sleep(2000)
+            gg.toast("Please Go To Daniel's City")
         end
     end
-    gg.sleep(2000)
-    gg.toast("Please Go To Daniel's City")
 end
 
 function NeoMall()
@@ -420,6 +421,8 @@ function VuPass()
     gg.addListItems(t)
     gg.setValues(t)
     gg.clearList()
+
+    gg.toast("Vu's Pass Unlocked")
 end
 
 function MayorPass()
@@ -443,6 +446,8 @@ function MayorPass()
     gg.addListItems(t)
     gg.setValues(t)
     gg.clearList()
+
+    gg.toast("Mayor Pass Unlocked")
 end
 
 function UpgradeShopLevel()
@@ -552,9 +557,11 @@ function UpgradeShopLevel()
             UpgradeShopLevelCheckbox[9] == false
         then
             gg.alert("Tick at least one checkbox")
+        else
+            gg.sleep(2000)
+            gg.toast("Please Go To Daniel's City")
         end
     end
-    gg.toast("Please Go To Daniel's City")
 end
 
 function InstantProductionTime()
@@ -700,7 +707,7 @@ end
 
 -- armebi-v7a | 32bit Start
 function Armebiv7a()
-    gg.toast("Coming Soon!")
+    gg.alert("Coming Soon!")
 end
 
 -- armebi-v7a | 32bit End
