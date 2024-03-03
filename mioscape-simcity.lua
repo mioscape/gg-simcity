@@ -1,6 +1,10 @@
 local ArchInfo64 = gg.getTargetInfo()["x64"]
-if ArchInfo64 == false then ArchInfoResult = 32 end
-if ArchInfo64 == true then ArchInfoResult = 64 end
+if ArchInfo64 == false then
+    ArchInfoResult = 32
+end
+if ArchInfo64 == true then
+    ArchInfoResult = 64
+end
 local ScriptDescription = "[SimCity BuildIt 1.53.1.121316 " .. ArchInfoResult .. " bit | Mioscape SimCity 0.8.8-beta]"
 
 local FactoryValue = "-1935981107"
@@ -19,9 +23,14 @@ local MayorPassMenuAlert =
 "Script ini akan membuat point Plumbob menjadi Mines (-)\n-----\nThis script will make the Plumbob point into Mines (-)"
 
 function GGPrompt(title)
-    Prompt = gg.prompt({
-        title
-    }, { "" }, { "number" })
+    Prompt =
+        gg.prompt(
+            {
+                title
+            },
+            { "" },
+            { "number" }
+        )
 
     if Prompt == nil then
         gg.toast("Canceled")
@@ -54,10 +63,18 @@ function Main()
             gg.setVisible(false)
         end
         if MIO == 1 then
-            MENU = gg.choice({
-                "\n[arm64-v8a | 64bit]\n", "\n[armebi-v7a | 32bit]\n", "\n[Back to Loader]\n"
-            }, nil, ScriptDescription)
-            if MENU == nil then else
+            MENU =
+                gg.choice(
+                    {
+                        "\n[arm64-v8a | 64bit]\n",
+                        "\n[armebi-v7a | 32bit]\n",
+                        "\n[Back to Loader]\n"
+                    },
+                    nil,
+                    ScriptDescription
+                )
+            if MENU == nil then
+            else
                 if MENU == 1 then
                     Arm64v8a()
                 end
@@ -65,9 +82,7 @@ function Main()
                     Armebiv7a()
                 end
                 if MENU == 3 then
-                    TG = gg.makeRequest(
-                            'https://ihya.dev/gg-loader/mioscape-loader.lua')
-                        .content
+                    TG = gg.makeRequest("https://ihya.dev/gg-loader/mioscape-loader.lua").content
                     if not TG then
                         os.exit()
                     else
@@ -89,31 +104,40 @@ function Arm64v8a()
             gg.setVisible(false)
         end
         if MIO == 1 then
-            MENU = gg.choice({
-                "\n[Max City Storage]\n", "\n[Max Omega Storage]\n", "\n[Max Neo Bank]\n",
-                "\n[Experience from Metal]\n", "\n[Omega Services]\n", "\n[Unlock Neo Mall]\n", "\n[Unlock Air Port]\n",
-                "\n[Unlock Vu's Tower Max Level]\n", "\n[Unlock Cargo Ship]\n", "\n[Unlock Vu's Pass]\n",
-                "\n[Unlock Mayor Pass]\n", "\n[Upgrade Shop Building]\n",
-                "\n[Instant Production Time & Exclude Item Requirement]\n",
-                "\n[Back]\n"
-            }, nil, ScriptDescription)
-            if MENU == nil then else
+            MENU =
+                gg.choice(
+                    {
+                        "\n[Max City Storage]\n",
+                        "\n[Max Omega Storage]\n",
+                        "\n[Max Neo Bank]\n",
+                        "\n[Experience from Metal]\n",
+                        "\n[Omega Services]\n",
+                        "\n[Unlock Neo Mall]\n",
+                        "\n[Unlock Air Port]\n",
+                        "\n[Unlock Vu's Tower Max Level]\n",
+                        "\n[Unlock Cargo Ship]\n",
+                        "\n[Unlock Vu's Pass]\n",
+                        "\n[Unlock Mayor Pass]\n",
+                        "\n[Upgrade Shop Building]\n",
+                        "\n[Instant Production Time & Exclude Item Requirement]\n",
+                        "\n[Back]\n"
+                    },
+                    nil,
+                    ScriptDescription
+                )
+            if MENU == nil then
+            else
                 if MENU == 1 then
-                    Alert(MaxCityStorageMenuAlert, "Next", "Cancel",
-                        CityStorage, Arm64v8a)
+                    Alert(MaxCityStorageMenuAlert, "Next", "Cancel", CityStorage, Arm64v8a)
                 end
                 if MENU == 2 then
-                    Alert(MaxOmegaStorageMenuAlert, "Next", "Cancel",
-                        OmegaStorage, Arm64v8a)
+                    Alert(MaxOmegaStorageMenuAlert, "Next", "Cancel", OmegaStorage, Arm64v8a)
                 end
                 if MENU == 3 then
-                    Alert(MaxNeoBankMenuAlert, "Next", "Cancel", NeoBank,
-                        Arm64v8a)
+                    Alert(MaxNeoBankMenuAlert, "Next", "Cancel", NeoBank, Arm64v8a)
                 end
                 if MENU == 4 then
-                    Alert(ExpfromMetalMenuAlert, "Next", "Cancel",
-                        ExpfromMetal,
-                        Arm64v8a)
+                    Alert(ExpfromMetalMenuAlert, "Next", "Cancel", ExpfromMetal, Arm64v8a)
                 end
                 if MENU == 5 then
                     OmegaServices()
@@ -134,8 +158,7 @@ function Arm64v8a()
                     VuPass()
                 end
                 if MENU == 11 then
-                    Alert(MayorPassMenuAlert, "Next", "Cancel", MayorPass,
-                        Arm64v8a)
+                    Alert(MayorPassMenuAlert, "Next", "Cancel", MayorPass, Arm64v8a)
                 end
                 if MENU == 12 then
                     UpgradeShopLevel()
@@ -188,61 +211,63 @@ end
 
 function ExpfromMetal()
     GGPrompt("Amount Experience From Metal")
-    gg.clearResults();
-    gg.clearList();
-    gg.searchNumber(FactoryValue, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0);
+    gg.clearResults()
+    gg.clearList()
+    gg.searchNumber(FactoryValue, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
 
-    local t = gg.getResults(gg.getResultsCount());
-    gg.clearResults();
-    gg.addListItems(t);
+    local t = gg.getResults(gg.getResultsCount())
+    gg.clearResults()
+    gg.addListItems(t)
 
-    local t = gg.getListItems();
-    gg.clearList();
-
-    for i, v in ipairs(t) do
-        v.address = v.address - 0x48;
-    end;
-    gg.addListItems(t); gg.loadResults(t); gg.clearList();
-
-    gg.refineNumber("16", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0);
-
-    local t = gg.getResults(1);
-    gg.clearResults();
-    gg.addListItems(t);
-
-    local t = gg.getListItems();
-    gg.clearList();
+    local t = gg.getListItems()
+    gg.clearList()
 
     for i, v in ipairs(t) do
-        v.address = v.address + 0x1F0;
-    end;
+        v.address = v.address - 0x48
+    end
+    gg.addListItems(t)
+    gg.loadResults(t)
+    gg.clearList()
 
-    gg.addListItems(t);
+    gg.refineNumber("16", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
 
-    local t = gg.getListItems();
-    gg.clearList();
+    local t = gg.getResults(1)
+    gg.clearResults()
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
     for i, v in ipairs(t) do
-        v.value = Prompt[1];
-        v.name  = "Level_Form_Metal";
-    end;
+        v.address = v.address + 0x1F0
+    end
 
-    gg.addListItems(t);
-    gg.setValues(t);
-    gg.toast("Experience From Metal Changed");
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+    for i, v in ipairs(t) do
+        v.value = Prompt[1]
+        v.name = "Level_Form_Metal"
+    end
+
+    gg.addListItems(t)
+    gg.setValues(t)
+    gg.toast("Experience From Metal Changed")
     gg.showUiButton()
     while true do
         if gg.isClickedUiButton() then
-            local tc = gg.getListItems(t);
-            gg.clearList();
+            local tc = gg.getListItems(t)
+            gg.clearList()
             for i, v in ipairs(tc) do
-                v.value = "0";
-            end;
+                v.value = "0"
+            end
 
-            gg.addListItems(tc);
-            gg.setValues(tc);
-            gg.clearResults();
-            gg.clearList();
-            gg.alert("Experience From Metal Reset");
+            gg.addListItems(tc)
+            gg.setValues(tc)
+            gg.clearResults()
+            gg.clearList()
+            gg.alert("Experience From Metal Reset")
             gg.hideUiButton()
             Arm64v8a()
         end
@@ -250,12 +275,19 @@ function ExpfromMetal()
 end
 
 function OmegaServices()
-    local OmegaServicesCheckbox = gg.prompt(
-        { "\n[Wind Power Plant > OMEGA Power Plant]\n", "\n[Basic Water Tower > OMEGA Water Tower]\n",
-            "\n[Small Sewage Outflow Pipe > OMEGA Sewage Treatment]\n",
-            "\n[Small Garbage Dump > OMEGA Recycling Center]\n",
-            "\n[Small Fire Station > Maxis Manor]\n", "\n[Small Factory > Nano Factory]\n" }, nil,
-        { "checkbox", "checkbox", "checkbox", "checkbox", "checkbox", "checkbox" })
+    local OmegaServicesCheckbox =
+        gg.prompt(
+            {
+                "\n[Wind Power Plant > OMEGA Power Plant]\n",
+                "\n[Basic Water Tower > OMEGA Water Tower]\n",
+                "\n[Small Sewage Outflow Pipe > OMEGA Sewage Treatment]\n",
+                "\n[Small Garbage Dump > OMEGA Recycling Center]\n",
+                "\n[Small Fire Station > Maxis Manor]\n",
+                "\n[Small Factory > Nano Factory]\n"
+            },
+            nil,
+            { "checkbox", "checkbox", "checkbox", "checkbox", "checkbox", "checkbox" }
+        )
     if OmegaServicesCheckbox == nil then
         gg.toast("Canceled")
         Arm64v8a()
@@ -308,6 +340,16 @@ function OmegaServices()
             gg.clearResults()
             gg.toast("Small Factory > Nano Factory")
         end
+        if
+            OmegaServicesCheckbox[1] == false and
+            OmegaServicesCheckbox[2] == false and
+            OmegaServicesCheckbox[3] == false and
+            OmegaServicesCheckbox[4] == false and
+            OmegaServicesCheckbox[5] == false and
+            OmegaServicesCheckbox[6] == false
+        then
+            gg.alert("Tick at least one checkbox")
+        end
     end
     gg.sleep(2000)
     gg.toast("Please Go To Daniel's City")
@@ -358,58 +400,78 @@ function CargoShip()
 end
 
 function VuPass()
-    gg.searchNumber(VuPassValue, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0);
-    gg.searchPointer(0);
-    gg.searchPointer(0);
+    gg.searchNumber(VuPassValue, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+    gg.searchPointer(0)
+    gg.searchPointer(0)
 
-    local t = gg.getResults(gg.getResultsCount());
-    gg.clearResults();
-    gg.addListItems(t);
+    local t = gg.getResults(gg.getResultsCount())
+    gg.clearResults()
+    gg.addListItems(t)
 
-    local t = gg.getListItems();
-    gg.clearList();
+    local t = gg.getListItems()
+    gg.clearList()
 
     for i, v in ipairs(t) do
-        v.address = v.address + 0x1A8;
-        v.flags = gg.TYPE_QWORD;
-        v.value = "-1";
+        v.address = v.address + 0x1A8
+        v.flags = gg.TYPE_QWORD
+        v.value = "-1"
     end
 
-    gg.addListItems(t);
-    gg.setValues(t);
-    gg.clearList();
+    gg.addListItems(t)
+    gg.setValues(t)
+    gg.clearList()
 end
 
 function MayorPass()
-    gg.searchNumber(MayorPassValue, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0);
-    gg.searchPointer(0);
-    gg.searchPointer(0);
+    gg.searchNumber(MayorPassValue, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+    gg.searchPointer(0)
+    gg.searchPointer(0)
 
-    local t = gg.getResults(gg.getResultsCount());
-    gg.clearResults();
-    gg.addListItems(t);
+    local t = gg.getResults(gg.getResultsCount())
+    gg.clearResults()
+    gg.addListItems(t)
 
-    local t = gg.getListItems();
-    gg.clearList();
+    local t = gg.getListItems()
+    gg.clearList()
 
     for i, v in ipairs(t) do
-        v.address = v.address + 0x1A8;
-        v.flags = gg.TYPE_QWORD;
-        v.value = "-1";
+        v.address = v.address + 0x1A8
+        v.flags = gg.TYPE_QWORD
+        v.value = "-1"
     end
 
-    gg.addListItems(t);
-    gg.setValues(t);
-    gg.clearList();
+    gg.addListItems(t)
+    gg.setValues(t)
+    gg.clearList()
 end
 
 function UpgradeShopLevel()
-    local UpgradeShopLevelCheckbox = gg.prompt(
-        { "\n[Building Supplies Store]\n", "\n[Hardware Store]\n", "\n[Farmer's Market]\n", "\n[Furniture Store]\n",
-            "\n[Gardening Supplies Store]\n", "\n[Donut Shop]\n", "\n[Fashion Store]\n", "\n[Fast Food Restaurant]\n",
-            "\n[Home Appliances Store]\n" }, nil,
-        { "checkbox", "checkbox", "checkbox", "checkbox", "checkbox", "checkbox",
-            "checkbox", "checkbox", "checkbox" })
+    local UpgradeShopLevelCheckbox =
+        gg.prompt(
+            {
+                "\n[Building Supplies Store]\n",
+                "\n[Hardware Store]\n",
+                "\n[Farmer's Market]\n",
+                "\n[Furniture Store]\n",
+                "\n[Gardening Supplies Store]\n",
+                "\n[Donut Shop]\n",
+                "\n[Fashion Store]\n",
+                "\n[Fast Food Restaurant]\n",
+                "\n[Home Appliances Store]\n"
+            },
+            nil,
+            {
+                "checkbox",
+                "checkbox",
+                "checkbox",
+                "checkbox",
+                "checkbox",
+                "checkbox",
+                "checkbox",
+                "checkbox",
+                "checkbox"
+            }
+        )
     if UpgradeShopLevelCheckbox == nil then
         gg.toast("Canceled")
         Arm64v8a()
@@ -478,143 +540,159 @@ function UpgradeShopLevel()
             gg.editAll("2135220573", gg.TYPE_DWORD)
             gg.toast("Home Appliances Store Maxed Out")
         end
+        if
+            UpgradeShopLevelCheckbox[1] == false and
+            UpgradeShopLevelCheckbox[2] == false and
+            UpgradeShopLevelCheckbox[3] == false and
+            UpgradeShopLevelCheckbox[4] == false and
+            UpgradeShopLevelCheckbox[5] == false and
+            UpgradeShopLevelCheckbox[6] == false and
+            UpgradeShopLevelCheckbox[7] == false and
+            UpgradeShopLevelCheckbox[8] == false and
+            UpgradeShopLevelCheckbox[9] == false
+        then
+            gg.alert("Tick at least one checkbox")
+        end
     end
     gg.toast("Please Go To Daniel's City")
 end
 
 function InstantProductionTime()
-    gg.clearList(); gg.clearResults();
-    gg.searchNumber(FactoryValue, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0);
+    gg.clearList()
+    gg.clearResults()
+    gg.searchNumber(FactoryValue, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
 
-    local t = gg.getResults(gg.getResultsCount());
-    gg.clearResults();
-    gg.addListItems(t);
+    local t = gg.getResults(gg.getResultsCount())
+    gg.clearResults()
+    gg.addListItems(t)
 
-    local t = gg.getListItems(); gg.clearList();
+    local t = gg.getListItems()
+    gg.clearList()
 
     for i, v in ipairs(t) do
-        v.address = v.address - 0x48;
+        v.address = v.address - 0x48
     end
-    gg.addListItems(t); gg.loadResults(t);
-    gg.clearList();
+    gg.addListItems(t)
+    gg.loadResults(t)
+    gg.clearList()
 
-    gg.refineNumber("16", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0);
+    gg.refineNumber("16", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
 
-    local t = gg.getResults(1);
-    gg.clearResults();
-    gg.addListItems(t);
-    local tb = gg.getListItems();
-    gg.clearList();
+    local t = gg.getResults(1)
+    gg.clearResults()
+    gg.addListItems(t)
+    local tb = gg.getListItems()
+    gg.clearList()
 
     for i, v in ipairs(tb) do
-        v.address = v.address - 0x8;
+        v.address = v.address - 0x8
     end
-    gg.addListItems(tb);
+    gg.addListItems(tb)
 
-    gg.sleep(500);
-    local ttt = gg.getListItems();
-    gg.clearList();
+    gg.sleep(500)
+    local ttt = gg.getListItems()
+    gg.clearList()
 
-    gg.searchNumber(ttt[1].value, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0);
+    gg.searchNumber(ttt[1].value, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
 
-    local t = gg.getResults(116);
-    gg.clearResults();
-    gg.addListItems(t);
+    local t = gg.getResults(116)
+    gg.clearResults()
+    gg.addListItems(t)
 
-    local t = gg.getListItems();
-    gg.clearList();
+    local t = gg.getListItems()
+    gg.clearList()
 
     for i, v in ipairs(t) do
-        v.address = v.address + 0x9C;
-        v.flags = gg.TYPE_DWORD;
-        v.value = "1000";
+        v.address = v.address + 0x9C
+        v.flags = gg.TYPE_DWORD
+        v.value = "1000"
     end
 
-    gg.addListItems(t);
-    gg.setValues(t);
+    gg.addListItems(t)
+    gg.setValues(t)
 
-
-    gg.sleep(1000);
-    gg.clearList();
+    gg.sleep(1000)
+    gg.clearList()
 end
 
 function ExcludeItemRequirement()
-    gg.clearList(); gg.clearResults();
-    gg.searchNumber(FactoryValue, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0);
+    gg.clearList()
+    gg.clearResults()
+    gg.searchNumber(FactoryValue, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
 
-    local t = gg.getResults(gg.getResultsCount());
-    gg.clearResults();
-    gg.addListItems(t);
+    local t = gg.getResults(gg.getResultsCount())
+    gg.clearResults()
+    gg.addListItems(t)
 
-    local t = gg.getListItems();
-    gg.clearList();
+    local t = gg.getListItems()
+    gg.clearList()
 
     for i, v in ipairs(t) do
-        v.address = v.address - 0x48;
+        v.address = v.address - 0x48
     end
-    gg.addListItems(t); gg.loadResults(t);
-    gg.clearList();
+    gg.addListItems(t)
+    gg.loadResults(t)
+    gg.clearList()
 
-    gg.refineNumber("16", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0);
+    gg.refineNumber("16", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
 
-    local t = gg.getResults(1);
-    gg.clearResults();
-    gg.addListItems(t);
-    local tb = gg.getListItems();
-    gg.clearList();
+    local t = gg.getResults(1)
+    gg.clearResults()
+    gg.addListItems(t)
+    local tb = gg.getListItems()
+    gg.clearList()
 
     for i, v in ipairs(tb) do
-        v.address = v.address - 0x8;
+        v.address = v.address - 0x8
     end
-    gg.addListItems(tb);
+    gg.addListItems(tb)
 
-    gg.sleep(500);
-    local ttt = gg.getListItems();
-    gg.clearList();
+    gg.sleep(500)
+    local ttt = gg.getListItems()
+    gg.clearList()
 
-    gg.searchNumber(ttt[1].value, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0);
+    gg.searchNumber(ttt[1].value, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
 
-    local t = gg.getResults(116);
-    gg.clearResults();
-    gg.addListItems(t);
+    local t = gg.getResults(116)
+    gg.clearResults()
+    gg.addListItems(t)
 
-    local t = gg.getListItems();
-    gg.clearList();
+    local t = gg.getListItems()
+    gg.clearList()
 
     for i, v in ipairs(t) do
-        v.address = v.address + 0x1B8;
-        v.flags = gg.TYPE_DWORD;
-        v.value = "0";
+        v.address = v.address + 0x1B8
+        v.flags = gg.TYPE_DWORD
+        v.value = "0"
     end
 
-    gg.addListItems(t);
-    gg.setValues(t);
+    gg.addListItems(t)
+    gg.setValues(t)
 
-    local t = gg.getListItems();
+    local t = gg.getListItems()
 
     for i, v in ipairs(t) do
-        v.address = v.address + 0x8;
-        v.flags = gg.TYPE_DWORD;
-        v.value = "0";
+        v.address = v.address + 0x8
+        v.flags = gg.TYPE_DWORD
+        v.value = "0"
     end
 
-    gg.addListItems(t);
-    gg.setValues(t);
+    gg.addListItems(t)
+    gg.setValues(t)
 
-    local t = gg.getListItems();
+    local t = gg.getListItems()
 
     for i, v in ipairs(t) do
-        v.address = v.address + 0x8;
-        v.flags = gg.TYPE_DWORD;
-        v.value = "0";
+        v.address = v.address + 0x8
+        v.flags = gg.TYPE_DWORD
+        v.value = "0"
     end
 
-    gg.addListItems(t);
-    gg.setValues(t);
+    gg.addListItems(t)
+    gg.setValues(t)
 
-
-    gg.sleep(1000);
-    gg.clearList();
+    gg.sleep(1000)
+    gg.clearList()
     gg.toast("Instant Production Time & Exclude Item Requirement")
 end
 
@@ -626,7 +704,6 @@ function Armebiv7a()
 end
 
 -- armebi-v7a | 32bit End
-
 
 while true do
     if gg.isVisible(true) then
