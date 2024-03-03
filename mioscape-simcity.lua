@@ -34,10 +34,13 @@ function GGPrompt(title)
 
     if Prompt == nil then
         gg.alert("The value cannot be empty")
-        ExpfromMetal()
+        SubMain64()
     elseif Prompt[1] == "" then
         gg.alert("The value cannot be empty")
-        ExpfromMetal()
+        SubMain64()
+    elseif Prompt[1] == "0" then
+        gg.alert("The value cannot be 0")
+        SubMain64()
     else
         return Prompt[1]
     end
