@@ -76,7 +76,7 @@ function Main()
             if MENU == nil then
             else
                 if MENU == 1 then
-                    Arm64v8a()
+                    SubMain64()
                 end
                 if MENU == 2 then
                     Armebiv7a()
@@ -88,6 +88,40 @@ function Main()
                     else
                         pcall(load(TG))
                     end
+                end
+            end
+        end
+        MIO = -1
+    end
+end
+
+function SubMain64()
+    while true do
+        if gg.isVisible(true) then
+            MIO = 1
+            gg.setVisible(false)
+        end
+        if MIO == 1 then
+            MENU =
+                gg.choice(
+                    {
+                        "\n[General]\n",
+                        "\n[Building]\n",
+                        "\n[Back]\n"
+                    },
+                    nil,
+                    ScriptDescription
+                )
+            if MENU == nil then
+            else
+                if MENU == 1 then
+                    Arm64v8a()
+                end
+                if MENU == 2 then
+                    Armebiv7a()
+                end
+                if MENU == 3 then
+                    Main()
                 end
             end
         end
@@ -349,6 +383,7 @@ function OmegaServices()
             OmegaServicesCheckbox[6] == false
         then
             gg.alert("Tick at least one checkbox")
+            OmegaServices()
         else
             gg.sleep(2000)
             gg.toast("Please Go To Daniel's City")
@@ -557,6 +592,7 @@ function UpgradeShopLevel()
             UpgradeShopLevelCheckbox[9] == false
         then
             gg.alert("Tick at least one checkbox")
+            UpgradeShopLevel()
         else
             gg.sleep(2000)
             gg.toast("Please Go To Daniel's City")
