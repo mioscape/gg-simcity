@@ -33,14 +33,14 @@ function GGPrompt(title)
         )
 
     if Prompt == nil then
-        gg.toast("Canceled")
-        Arm64v8a()
+        gg.alert("The value cannot be empty")
+        ExpfromMetal()
     elseif Prompt[1] == "" then
-        gg.toast("Canceled")
-        Arm64v8a()
+        gg.alert("The value cannot be empty")
+        ExpfromMetal()
     elseif Prompt[1] == "0" then
-        gg.toast("Canceled")
-        Arm64v8a()
+        gg.alert("The value cannot be 0")
+        ExpfromMetal()
     else
         return Prompt[1]
     end
