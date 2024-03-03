@@ -105,8 +105,8 @@ function SubMain64()
             MENU =
                 gg.choice(
                     {
-                        "\n[General]\n",
-                        "\n[Building]\n",
+                        "\n[SimCity General]\n",
+                        "\n[SimCity Building]\n",
                         "\n[Back]\n"
                     },
                     nil,
@@ -202,7 +202,7 @@ function Arm64v8a()
                     ExcludeItemRequirement()
                 end
                 if MENU == 14 then
-                    Main()
+                    SubMain64()
                 end
             end
         end
