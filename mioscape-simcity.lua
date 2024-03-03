@@ -5,7 +5,7 @@ end
 if ArchInfo64 == true then
     ArchInfoResult = 64
 end
-local ScriptDescription = "[SimCity BuildIt 1.53.1.121316 " .. ArchInfoResult .. " bit | Mioscape SimCity 0.8.8-beta]"
+local ScriptDescription = "[SimCity BuildIt 1.53.1.121316 " .. ArchInfoResult .. " bit | Mioscape SimCity 0.8.11-beta]"
 
 local FactoryValue = "-1935981107"
 local VuPassValue = "-7995824390300544013"
