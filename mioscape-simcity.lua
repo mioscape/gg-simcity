@@ -7,7 +7,7 @@ if ArchInfo64 == true then
 end
 
 local GameVersion = "1.53.1.121316"
-local ScriptVersion = "0.8.12-beta"
+local ScriptVersion = "0.9.1-beta"
 local ScriptDescription =
     "[SimCity BuildIt " .. GameVersion .. " " .. ArchInfoResult .. " bit | Mioscape SimCity v" .. ScriptVersion .. "]"
 
