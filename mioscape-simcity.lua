@@ -55,7 +55,10 @@ local MayorPassMenuAlert =
     "Script ini akan membuat point Plumbob menjadi Mines (-)\n-----\nThis script will make the Plumbob point into Mines (-)"
 local PopulationNewResidentialZoneAlert =
     "10.000.000 Populasi dari Membangun Bangunan Baru Zona Residensial. Tidak Permanen, akan reset setelah login ulang.\n-----\n10.000.000 Population from Building New Residential Zone. It's not permanent, it will reset after re-login."
+local Season38Alert =
+    "Pastikan Anda hanya menaruh tempat yang ingin diganti\n-----\nMake sure you only put the thing you want to change"
 
+gg.setRanges(gg.REGION_C_HEAP | gg.REGION_OTHER | gg.REGION_C_ALLOC)
 function GGPrompt(title)
     Prompt =
         gg.prompt(
@@ -855,7 +858,7 @@ function Arm64v8aBuilding()
                     "\n[Residential Zone]\n",
                     "\n[Epic Building]\n",
                     "\n[Regional Building]\n",
-                    "\n[Season Pass Building]\n",
+                    "\n[Mayor Pass Building]\n",
                     "\n[Back]\n"
                 },
                 nil,
@@ -864,7 +867,7 @@ function Arm64v8aBuilding()
             if MENU == nil then
             else
                 if MENU == 1 then
-                    ResidentialZoneMenu()
+                    Armebiv7a()
                 end
                 if MENU == 2 then
                     Armebiv7a()
@@ -873,7 +876,7 @@ function Arm64v8aBuilding()
                     Armebiv7a()
                 end
                 if MENU == 4 then
-                    Armebiv7a()
+                    MayorPassBuilding()
                 end
                 if MENU == 5 then
                     Main()
@@ -884,7 +887,7 @@ function Arm64v8aBuilding()
     end
 end
 
-function ResidentialZoneMenu()
+function MayorPassBuilding()
     while true do
         if gg.isVisible(true) then
             MIO = 1
@@ -894,14 +897,7 @@ function ResidentialZoneMenu()
             MENU =
                 gg.choice(
                 {
-                    "\n[Residential Zone]\n",
-                    "\n[Art Nouveau Zone]\n",
-                    "\n[Old Town House]\n",
-                    "\n[Latin America Zone]\n",
-                    "\n[Parisian Zone]\n",
-                    "\n[London Town Zone]\n",
-                    "\n[Tokyo Town Zone]\n",
-                    "\n[Omega Zone]\n",
+                    "\n[Season 38 | Historic Prague]\n",
                     "\n[Back]\n"
                 },
                 nil,
@@ -910,30 +906,9 @@ function ResidentialZoneMenu()
             if MENU == nil then
             else
                 if MENU == 1 then
-                    ResidentialZone()
+                    Alert(Season38Alert, "Next", "Cancel", Season38, MayorPassBuilding)
                 end
                 if MENU == 2 then
-                    ArtNouveauZone()
-                end
-                if MENU == 3 then
-                    OldTownHouse()
-                end
-                if MENU == 4 then
-                    LatinAmericaZone()
-                end
-                if MENU == 5 then
-                    ParisianZone()
-                end
-                if MENU == 6 then
-                    LondonTownZone()
-                end
-                if MENU == 7 then
-                    TokyoTownZone()
-                end
-                if MENU == 8 then
-                    OmegaZone()
-                end
-                if MENU == 9 then
                     Arm64v8aBuilding()
                 end
             end
@@ -942,723 +917,116 @@ function ResidentialZoneMenu()
     end
 end
 
-function ResidentialZone()
-    gg.clearList()
-    gg.clearResults()
-
-    gg.searchNumber(TAMAN, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(gg.getResultsCount())
-    gg.clearResults()
-
-    gg.addListItems(t)
-
-    local t = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(t) do
-        v.address = v.address + OFFSET1
+function Season38()
+    local Season38Checkbox =
+        gg.prompt(
+        {
+            "\n[Wind Power Plant > Prague Powder Tower]\n",
+            "\n[Basic Water Tower > Prague Charles Bridge]\n",
+            "\n[Small Sewage Outflow Pipe > Prague Quadrio Center]\n",
+            "\n[Small Garbage Dump > Prague Petrin Tower]\n",
+            "\n[Small Fire Station > Prague Old Town Square]\n",
+            "\n[Small Police Station > Prague Castleu]\n",
+            "\n[Small Health Clinic > Prague National Theatre]\n",
+            "\n[Small Fountain Park > Prague Zizkov Tower]\n",
+            "\n[Coal Power Plant > Prague Petrin Cathedral]\n"
+        },
+        nil,
+        {
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox"
+        }
+    )
+    if Season38Checkbox == nil then
+        gg.toast("Canceled")
+        MayorPassBuilding()
+    else
+        if Season38Checkbox[1] then
+            gg.clearResults()
+            gg.searchNumber(" 751144117 ", gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("-1042592443", gg.TYPE_DWORD)
+            gg.toast("Wind Power Plant > Prague Powder Tower")
+        end
+        if Season38Checkbox[2] then
+            gg.clearResults()
+            gg.searchNumber(" 139346164 ", gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("-971391086", gg.TYPE_DWORD)
+            gg.toast("Basic Water Tower > Prague Charles Bridge")
+        end
+        if Season38Checkbox[3] then
+            gg.clearResults()
+            gg.searchNumber("182280403", gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("-84591751", gg.TYPE_DWORD)
+            gg.toast("Small Sewage Outflow Pipe > Prague Quadrio Center")
+        end
+        if Season38Checkbox[4] then
+            gg.clearResults()
+            gg.searchNumber("-741284489", gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("1544098790", gg.TYPE_DWORD)
+            gg.toast("Small Garbage Dump > Prague Petrin Tower")
+        end
+        if Season38Checkbox[5] then
+            gg.clearResults()
+            gg.searchNumber("583140736", gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("-2099908710", gg.TYPE_DWORD)
+            gg.toast("Small Fire Station > Prague Old Town Square")
+        end
+        if Season38Checkbox[6] then
+            gg.clearResults()
+            gg.searchNumber(" -150077002", gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("1073072576", gg.TYPE_DWORD)
+            gg.toast("Small Police Station > Prague Castleu")
+        end
+        if Season38Checkbox[7] then
+            gg.clearResults()
+            gg.searchNumber(" -66177429", gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("367160678", gg.TYPE_DWORD)
+            gg.toast("Small Health Clinic > Prague National Theatre")
+        end
+        if Season38Checkbox[8] then
+            gg.clearResults()
+            gg.searchNumber(" -1672104106", gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("892518849", gg.TYPE_DWORD)
+            gg.toast("Small Fountain Park > Prague Zizkov Tower")
+        end
+        if Season38Checkbox[9] then
+            gg.clearResults()
+            gg.searchNumber(" -1297331478", gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("404602461", gg.TYPE_DWORD)
+            gg.toast("Coal Power Plant > Prague Petrin Cathedral")
+        end
+        if
+            Season38Checkbox[1] == false and Season38Checkbox[2] == false and Season38Checkbox[3] == false and
+                Season38Checkbox[4] == false and
+                Season38Checkbox[5] == false and
+                Season38Checkbox[6] == false and
+                Season38Checkbox[7] == false and
+                Season38Checkbox[8] == false and
+                Season38Checkbox[9] == false
+         then
+            gg.alert("Tick at least one checkbox")
+            UpgradeShopLevel()
+        else
+            gg.sleep(2000)
+            gg.toast("Please Go To Daniel's City")
+        end
     end
-
-    gg.addListItems(t)
-    gg.loadResults(t)
-    gg.clearList()
-
-    gg.refineNumber(ITEMOFFSET, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(1)
-    gg.clearResults()
-
-    gg.addListItems(t)
-
-    local b = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(b) do
-        v.address = v.address - OFFSET2
-    end
-
-    gg.addListItems(b)
-
-    local RESET = gg.getListItems()
-    gg.clearList()
-
-    gg.searchNumber(RUMAH, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(gg.getResultsCount())
-    gg.clearResults()
-
-    gg.addListItems(t)
-
-    local t = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(t) do
-        v.address = v.address - 0x48
-    end
-    gg.addListItems(t)
-    gg.loadResults(t)
-    gg.clearList()
-
-    gg.refineNumber("3", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(1)
-    gg.clearResults()
-    gg.addListItems(t)
-
-    local t = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(t) do
-        v.address = v.address - 0x8
-        v.flags = gg.TYPE_QWORD
-    end
-    gg.addListItems(t)
-
-    local t = gg.loadResults(gg.getListItems())
-    gg.clearList()
-    gg.addListItems(RESET)
-
-    local saved_list = gg.getListItems()
-    local search_results = gg.getResults(gg.getResultsCount())
-
-    for i in ipairs(saved_list) do
-        saved_list[i].value = search_results[i].address
-    end
-    gg.setValues(saved_list)
-    gg.clearList()
-    gg.clearResults()
-    gg.toast("Residential Zone Success")
-end
-
-function ArtNouveauZone()
-    gg.clearList()
-    gg.clearResults()
-
-    gg.searchNumber(TAMAN, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(gg.getResultsCount())
-    gg.clearResults()
-
-    gg.addListItems(t)
-
-    local t = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(t) do
-        v.address = v.address + OFFSET1
-    end
-
-    gg.addListItems(t)
-    gg.loadResults(t)
-    gg.clearList()
-
-    gg.refineNumber(ITEMOFFSET, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(1)
-    gg.clearResults()
-
-    gg.addListItems(t)
-
-    local b = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(b) do
-        v.address = v.address - OFFSET2
-    end
-
-    gg.addListItems(b)
-
-    local RESET = gg.getListItems()
-    gg.clearList()
-
-    gg.searchNumber(ART, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(gg.getResultsCount())
-    gg.clearResults()
-
-    gg.addListItems(t)
-
-    local t = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(t) do
-        v.address = v.address - 0x48
-    end
-    gg.addListItems(t)
-    gg.loadResults(t)
-    gg.clearList()
-
-    gg.refineNumber("3", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(1)
-    gg.clearResults()
-    gg.addListItems(t)
-
-    local t = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(t) do
-        v.address = v.address - 0x8
-        v.flags = gg.TYPE_QWORD
-    end
-    gg.addListItems(t)
-
-    local t = gg.loadResults(gg.getListItems())
-    gg.clearList()
-    gg.addListItems(RESET)
-
-    local saved_list = gg.getListItems()
-    local search_results = gg.getResults(gg.getResultsCount())
-
-    for i in ipairs(saved_list) do
-        saved_list[i].value = search_results[i].address
-    end
-
-    gg.setValues(saved_list)
-    gg.clearList()
-    gg.clearResults()
-    gg.toast("Art Nouveau Zone Success")
-end
-
-function OldTownHouse()
-    gg.clearList()
-    gg.clearResults()
-
-    gg.searchNumber(TAMAN, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(gg.getResultsCount())
-    gg.clearResults()
-
-    gg.addListItems(t)
-
-    local t = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(t) do
-        v.address = v.address + OFFSET1
-    end
-
-    gg.addListItems(t)
-    gg.loadResults(t)
-    gg.clearList()
-
-    gg.refineNumber(ITEMOFFSET, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(1)
-    gg.clearResults()
-
-    gg.addListItems(t)
-
-    local b = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(b) do
-        v.address = v.address - OFFSET2
-    end
-
-    gg.addListItems(b)
-
-    local RESET = gg.getListItems()
-    gg.clearList()
-
-    gg.searchNumber(OLD, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(gg.getResultsCount())
-    gg.clearResults()
-
-    gg.addListItems(t)
-
-    local t = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(t) do
-        v.address = v.address - 0x48
-    end
-    gg.addListItems(t)
-    gg.loadResults(t)
-    gg.clearList()
-
-    gg.refineNumber("3", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(1)
-    gg.clearResults()
-    gg.addListItems(t)
-
-    local t = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(t) do
-        v.address = v.address - 0x8
-        v.flags = gg.TYPE_QWORD
-    end
-    gg.addListItems(t)
-
-    local t = gg.loadResults(gg.getListItems())
-    gg.clearList()
-    gg.addListItems(RESET)
-
-    local saved_list = gg.getListItems()
-    local search_results = gg.getResults(gg.getResultsCount())
-
-    for i in ipairs(saved_list) do
-        saved_list[i].value = search_results[i].address
-    end
-
-    gg.setValues(saved_list)
-    gg.clearList()
-    gg.clearResults()
-    gg.toast("Old Town House Success")
-end
-
-function LatinAmericaZone()
-    gg.clearList()
-    gg.clearResults()
-
-    gg.searchNumber(TAMAN, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(gg.getResultsCount())
-    gg.clearResults()
-
-    gg.addListItems(t)
-
-    local t = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(t) do
-        v.address = v.address + OFFSET1
-    end
-
-    gg.addListItems(t)
-    gg.loadResults(t)
-    gg.clearList()
-
-    gg.refineNumber(ITEMOFFSET, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(1)
-    gg.clearResults()
-
-    gg.addListItems(t)
-
-    local b = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(b) do
-        v.address = v.address - OFFSET2
-    end
-
-    gg.addListItems(b)
-
-    local RESET = gg.getListItems()
-    gg.clearList()
-
-    gg.searchNumber(LATIN, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(gg.getResultsCount())
-    gg.clearResults()
-
-    gg.addListItems(t)
-
-    local t = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(t) do
-        v.address = v.address - 0x48
-    end
-    gg.addListItems(t)
-    gg.loadResults(t)
-    gg.clearList()
-
-    gg.refineNumber("3", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(1)
-    gg.clearResults()
-    gg.addListItems(t)
-
-    local t = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(t) do
-        v.address = v.address - 0x8
-        v.flags = gg.TYPE_QWORD
-    end
-    gg.addListItems(t)
-
-    local t = gg.loadResults(gg.getListItems())
-    gg.clearList()
-    gg.addListItems(RESET)
-
-    local saved_list = gg.getListItems()
-    local search_results = gg.getResults(gg.getResultsCount())
-
-    for i in ipairs(saved_list) do
-        saved_list[i].value = search_results[i].address
-    end
-
-    gg.setValues(saved_list)
-    gg.clearList()
-    gg.clearResults()
-    gg.toast("Latin America Zone Success")
-end
-
-function ParisianZone()
-    gg.clearList()
-    gg.clearResults()
-
-    gg.searchNumber(TAMAN, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(gg.getResultsCount())
-    gg.clearResults()
-
-    gg.addListItems(t)
-
-    local t = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(t) do
-        v.address = v.address + OFFSET1
-    end
-
-    gg.addListItems(t)
-    gg.loadResults(t)
-    gg.clearList()
-
-    gg.refineNumber(ITEMOFFSET, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(1)
-    gg.clearResults()
-
-    gg.addListItems(t)
-
-    local b = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(b) do
-        v.address = v.address - OFFSET2
-    end
-
-    gg.addListItems(b)
-
-    local RESET = gg.getListItems()
-    gg.clearList()
-
-    gg.searchNumber(PARIS, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(gg.getResultsCount())
-    gg.clearResults()
-
-    gg.addListItems(t)
-
-    local t = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(t) do
-        v.address = v.address - 0x48
-    end
-    gg.addListItems(t)
-    gg.loadResults(t)
-    gg.clearList()
-
-    gg.refineNumber("3", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(1)
-    gg.clearResults()
-    gg.addListItems(t)
-
-    local t = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(t) do
-        v.address = v.address - 0x8
-        v.flags = gg.TYPE_QWORD
-    end
-    gg.addListItems(t)
-
-    local t = gg.loadResults(gg.getListItems())
-    gg.clearList()
-    gg.addListItems(RESET)
-
-    local saved_list = gg.getListItems()
-    local search_results = gg.getResults(gg.getResultsCount())
-
-    for i in ipairs(saved_list) do
-        saved_list[i].value = search_results[i].address
-    end
-
-    gg.setValues(saved_list)
-    gg.clearList()
-    gg.clearResults()
-    gg.toast("Parisian Zone Success")
-end
-
-function LondonTownZone()
-    gg.clearList()
-    gg.clearResults()
-
-    gg.searchNumber(TAMAN, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(gg.getResultsCount())
-    gg.clearResults()
-
-    gg.addListItems(t)
-
-    local t = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(t) do
-        v.address = v.address + OFFSET1
-    end
-
-    gg.addListItems(t)
-    gg.loadResults(t)
-    gg.clearList()
-
-    gg.refineNumber(ITEMOFFSET, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(1)
-    gg.clearResults()
-
-    gg.addListItems(t)
-
-    local b = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(b) do
-        v.address = v.address - OFFSET2
-    end
-
-    gg.addListItems(b)
-
-    local RESET = gg.getListItems()
-    gg.clearList()
-
-    gg.searchNumber(LONDON, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(gg.getResultsCount())
-    gg.clearResults()
-
-    gg.addListItems(t)
-
-    local t = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(t) do
-        v.address = v.address - 0x48
-    end
-    gg.addListItems(t)
-    gg.loadResults(t)
-    gg.clearList()
-
-    gg.refineNumber("3", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(1)
-    gg.clearResults()
-    gg.addListItems(t)
-
-    local t = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(t) do
-        v.address = v.address - 0x8
-        v.flags = gg.TYPE_QWORD
-    end
-    gg.addListItems(t)
-
-    local t = gg.loadResults(gg.getListItems())
-    gg.clearList()
-    gg.addListItems(RESET)
-
-    local saved_list = gg.getListItems()
-    local search_results = gg.getResults(gg.getResultsCount())
-
-    for i in ipairs(saved_list) do
-        saved_list[i].value = search_results[i].address
-    end
-
-    gg.setValues(saved_list)
-    gg.clearList()
-    gg.clearResults()
-    gg.toast("London Town Success")
-end
-
-function TokyoTownZone()
-    gg.clearList()
-    gg.clearResults()
-
-    gg.searchNumber(TAMAN, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(gg.getResultsCount())
-    gg.clearResults()
-
-    gg.addListItems(t)
-
-    local t = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(t) do
-        v.address = v.address + OFFSET1
-    end
-
-    gg.addListItems(t)
-    gg.loadResults(t)
-    gg.clearList()
-
-    gg.refineNumber(ITEMOFFSET, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(1)
-    gg.clearResults()
-
-    gg.addListItems(t)
-
-    local b = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(b) do
-        v.address = v.address - OFFSET2
-    end
-
-    gg.addListItems(b)
-
-    local RESET = gg.getListItems()
-    gg.clearList()
-
-    gg.searchNumber(TOKYO, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(gg.getResultsCount())
-    gg.clearResults()
-
-    gg.addListItems(t)
-
-    local t = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(t) do
-        v.address = v.address + 0x90
-    end
-    gg.addListItems(t)
-    gg.loadResults(t)
-    gg.clearList()
-
-    gg.refineNumber("-4928453024248687536", gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(1)
-    gg.clearResults()
-
-    gg.addListItems(t)
-
-    local b = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(b) do
-        v.address = v.address - 0x70
-    end
-
-    gg.addListItems(t)
-    local t = gg.loadResults(gg.getListItems())
-    gg.clearList()
-    gg.addListItems(RESET)
-
-    local saved_list = gg.getListItems()
-    local search_results = gg.getResults(gg.getResultsCount())
-
-    for i in ipairs(saved_list) do
-        saved_list[i].value = search_results[i].address
-    end
-
-    gg.setValues(saved_list)
-    gg.clearList()
-    gg.clearResults()
-    gg.toast("Tokyo Town Zone Success")
-end
-
-function OmegaZone()
-    gg.clearList()
-    gg.clearResults()
-
-    gg.searchNumber(TAMAN, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(gg.getResultsCount())
-    gg.clearResults()
-
-    gg.addListItems(t)
-
-    local t = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(t) do
-        v.address = v.address + OFFSET1
-    end
-
-    gg.addListItems(t)
-    gg.loadResults(t)
-    gg.clearList()
-
-    gg.refineNumber(ITEMOFFSET, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(1)
-    gg.clearResults()
-
-    gg.addListItems(t)
-
-    local b = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(b) do
-        v.address = v.address - OFFSET2
-    end
-
-    gg.addListItems(b)
-
-    local RESET = gg.getListItems()
-    gg.clearList()
-
-    gg.searchNumber(OMEGA, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(gg.getResultsCount())
-    gg.clearResults()
-
-    gg.addListItems(t)
-
-    local t = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(t) do
-        v.address = v.address - 0x48
-    end
-    gg.addListItems(t)
-    gg.loadResults(t)
-    gg.clearList()
-
-    gg.refineNumber("3", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
-
-    local t = gg.getResults(1)
-    gg.clearResults()
-    gg.addListItems(t)
-
-    local t = gg.getListItems()
-    gg.clearList()
-
-    for i, v in ipairs(t) do
-        v.address = v.address - 0x8
-        v.flags = gg.TYPE_QWORD
-    end
-    gg.addListItems(t)
-
-    local t = gg.loadResults(gg.getListItems())
-    gg.clearList()
-    gg.addListItems(RESET)
-
-    local saved_list = gg.getListItems()
-    local search_results = gg.getResults(gg.getResultsCount())
-
-    for i in ipairs(saved_list) do
-        saved_list[i].value = search_results[i].address
-    end
-
-    gg.setValues(saved_list)
-    gg.clearList()
-    gg.clearResults()
-    gg.toast("Omega Zone Success")
 end
 
 -- arm64-v8a | 64bit End
