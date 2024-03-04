@@ -43,6 +43,7 @@ local ISLAND = "-1220248775"
 local FROZEN = "-2038647854"
 local LIMINSTONE = "46404375"
 
+local DefaultAlert = "Apakah kamu yakin ingin melanjutkan?\n-----\nAre you sure you want to continue?"
 local MaxCityStorageMenuAlert =
     "Pastikan City Storage masih di angka 40 (termasuk Bangunan City Storage)\n-----\nMake sure City Storage is still at 40 (including City Storage Buildings)"
 local MaxOmegaStorageMenuAlert =
@@ -183,19 +184,19 @@ function Arm64v8a()
                     OmegaServices()
                 end
                 if MENU == 6 then
-                    NeoMall()
+                    Alert(DefaultAlert, "Next", "Cancel", NeoMall, Arm64v8a)
                 end
                 if MENU == 7 then
-                    AirPort()
+                    Alert(DefaultAlert, "Next", "Cancel", AirPort, Arm64v8a)
                 end
                 if MENU == 8 then
-                    VuTower()
+                    Alert(DefaultAlert, "Next", "Cancel", VuTower, Arm64v8a)
                 end
                 if MENU == 9 then
-                    CargoShip()
+                    Alert(DefaultAlert, "Next", "Cancel", CargoShip, Arm64v8a)
                 end
                 if MENU == 10 then
-                    VuPass()
+                    Alert(DefaultAlert, "Next", "Cancel", VuPass, Arm64v8a)
                 end
                 if MENU == 11 then
                     Alert(MayorPassMenuAlert, "Next", "Cancel", MayorPass, Arm64v8a)
@@ -204,11 +205,10 @@ function Arm64v8a()
                     UpgradeShopLevel()
                 end
                 if MENU == 13 then
-                    InstantProductionTime()
-                    ExcludeItemRequirement()
+                    Alert(DefaultAlert, "Next", "Cancel", InstantProductionTime, Arm64v8a)
                 end
                 if MENU == 14 then
-                    BuldozingKeepingRestrictedBuilding()
+                    Alert(DefaultAlert, "Next", "Cancel", BuldozingKeepingRestrictedBuilding, Arm64v8a)
                 end
                 if MENU == 15 then
                     Alert(PopulationNewResidentialZoneAlert, "Next", "Cancel", PopulationNewResidentialZone, Arm64v8a)
@@ -666,6 +666,7 @@ function InstantProductionTime()
 
     gg.sleep(1000)
     gg.clearList()
+    ExcludeItemRequirement()
 end
 
 function ExcludeItemRequirement()
