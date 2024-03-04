@@ -5,11 +5,43 @@ end
 if ArchInfo64 == true then
     ArchInfoResult = 64
 end
-local ScriptDescription = "[SimCity BuildIt 1.53.1.121316 " .. ArchInfoResult .. " bit | Mioscape SimCity 0.8.12-beta]"
+
+local GameVersion = "1.53.1.121316"
+local ScriptVersion = "0.8.12-beta"
+local ScriptDescription =
+    "[SimCity BuildIt " .. GameVersion .. " " .. ArchInfoResult .. " bit | Mioscape SimCity v" .. ScriptVersion .. "]"
 
 local FactoryValue = "-1935981107"
 local VuPassValue = "-7995824390300544013"
 local MayorPassValue = "-7992622555426941375"
+local MAXIS = "925375395"
+
+local TAMAN = "4635382469820688998"
+local ITEMOFFSET = "-3527480595996367819"
+local OFFSET1 = "0x60"
+local OFFSET2 = "0x40"
+local EDUKASI = "-1881032548"
+local HIBURAN = "-447372290"
+local PERJUDIAN = "-691412735"
+local TRANSPORT = "1813794920"
+local TERKENAL = "-113962678"
+local PANTAI = "-1999290445"
+local GUNUNG = "995463179"
+
+local RUMAH = "1522778650"
+local LATIN = "-537490833"
+local ART = "1920513178"
+local PARIS = "2050186616"
+local LONDON = "-1203406301"
+local OLD = "-1562421476"
+local TOKYO = "1493262871"
+local OMEGA = "-1430868908"
+
+local GREEN = "973877747"
+local CANYON = "-1528167776"
+local ISLAND = "-1220248775"
+local FROZEN = "-2038647854"
+local LIMINSTONE = "46404375"
 
 local MaxCityStorageMenuAlert =
 "Pastikan City Storage masih di angka 40 (termasuk Bangunan City Storage)\n-----\nMake sure City Storage is still at 40 (including City Storage Buildings)"
@@ -119,7 +151,7 @@ function SubMain64()
                     Arm64v8a()
                 end
                 if MENU == 2 then
-                    Armebiv7a()
+                    Arm64v8aBuilding()
                 end
                 if MENU == 3 then
                     Main()
@@ -376,8 +408,7 @@ function OmegaServices()
             gg.toast("Small Factory > Nano Factory")
         end
         if
-            OmegaServicesCheckbox[1] == false and
-            OmegaServicesCheckbox[2] == false and
+            OmegaServicesCheckbox[1] == false and OmegaServicesCheckbox[2] == false and
             OmegaServicesCheckbox[3] == false and
             OmegaServicesCheckbox[4] == false and
             OmegaServicesCheckbox[5] == false and
@@ -582,8 +613,7 @@ function UpgradeShopLevel()
             gg.toast("Home Appliances Store Maxed Out")
         end
         if
-            UpgradeShopLevelCheckbox[1] == false and
-            UpgradeShopLevelCheckbox[2] == false and
+            UpgradeShopLevelCheckbox[1] == false and UpgradeShopLevelCheckbox[2] == false and
             UpgradeShopLevelCheckbox[3] == false and
             UpgradeShopLevelCheckbox[4] == false and
             UpgradeShopLevelCheckbox[5] == false and
@@ -738,6 +768,825 @@ function ExcludeItemRequirement()
     gg.sleep(1000)
     gg.clearList()
     gg.toast("Instant Production Time & Exclude Item Requirement")
+end
+
+function Arm64v8aBuilding()
+    while true do
+        if gg.isVisible(true) then
+            MIO = 1
+            gg.setVisible(false)
+        end
+        if MIO == 1 then
+            MENU =
+                gg.choice(
+                    {
+                        "\n[Residential Zone]\n",
+                        "\n[Epic Building]\n",
+                        "\n[Regional Building]\n",
+                        "\n[Season Pass Building]\n",
+                        "\n[Back]\n"
+                    },
+                    nil,
+                    ScriptDescription
+                )
+            if MENU == nil then
+            else
+                if MENU == 1 then
+                    ResidentialZoneMenu()
+                end
+                if MENU == 2 then
+                    Armebiv7a()
+                end
+                if MENU == 3 then
+                    Armebiv7a()
+                end
+                if MENU == 4 then
+                    Armebiv7a()
+                end
+                if MENU == 5 then
+                    Arm64v8a()
+                end
+            end
+        end
+        MIO = -1
+    end
+end
+
+function ResidentialZoneMenu()
+    while true do
+        if gg.isVisible(true) then
+            MIO = 1
+            gg.setVisible(false)
+        end
+        if MIO == 1 then
+            MENU =
+                gg.choice(
+                    {
+                        "\n[Residential Zone]\n",
+                        "\n[Art Nouveau Zone]\n",
+                        "\n[Old Town House]\n",
+                        "\n[Latin America Zone]\n",
+                        "\n[Parisian Zone]\n",
+                        "\n[London Town Zone]\n",
+                        "\n[Tokyo Town Zone]\n",
+                        "\n[Omega Zone]\n",
+                        "\n[Back]\n"
+                    },
+                    nil,
+                    ScriptDescription
+                )
+            if MENU == nil then
+            else
+                if MENU == 1 then
+                    ResidentialZone()
+                end
+                if MENU == 2 then
+                    ArtNouveauZone()
+                end
+                if MENU == 3 then
+                    OldTownHouse()
+                end
+                if MENU == 4 then
+                    LatinAmericaZone()
+                end
+                if MENU == 5 then
+                    ParisianZone()
+                end
+                if MENU == 6 then
+                    LondonTownZone()
+                end
+                if MENU == 7 then
+                    TokyoTownZone()
+                end
+                if MENU == 8 then
+                    OmegaZone()
+                end
+                if MENU == 9 then
+                    Arm64v8aBuilding()
+                end
+            end
+        end
+        MIO = -1
+    end
+end
+
+function ResidentialZone()
+    gg.clearList()
+    gg.clearResults()
+
+    gg.searchNumber(TAMAN, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(gg.getResultsCount())
+    gg.clearResults()
+
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(t) do
+        v.address = v.address + OFFSET1
+    end
+
+    gg.addListItems(t)
+    gg.loadResults(t)
+    gg.clearList()
+
+    gg.refineNumber(ITEMOFFSET, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(1)
+    gg.clearResults()
+
+    gg.addListItems(t)
+
+    local b = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(b) do
+        v.address = v.address - OFFSET2
+    end
+
+    gg.addListItems(b)
+
+    local RESET = gg.getListItems()
+    gg.clearList()
+
+    gg.searchNumber(RUMAH, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(gg.getResultsCount())
+    gg.clearResults()
+
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(t) do
+        v.address = v.address - 0x48
+    end
+    gg.addListItems(t)
+    gg.loadResults(t)
+    gg.clearList()
+
+    gg.refineNumber("3", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(1)
+    gg.clearResults()
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(t) do
+        v.address = v.address - 0x8
+        v.flags = gg.TYPE_QWORD
+    end
+    gg.addListItems(t)
+
+    local t = gg.loadResults(gg.getListItems())
+    gg.clearList()
+    gg.addListItems(RESET)
+
+    local saved_list = gg.getListItems()
+    local search_results = gg.getResults(gg.getResultsCount())
+
+    for i in ipairs(saved_list) do
+        saved_list[i].value = search_results[i].address
+    end
+    gg.setValues(saved_list)
+    gg.clearList()
+    gg.clearResults()
+    gg.toast("Residential Zone Success")
+end
+
+function ArtNouveauZone()
+    gg.clearList()
+    gg.clearResults()
+
+    gg.searchNumber(TAMAN, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(gg.getResultsCount())
+    gg.clearResults()
+
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(t) do
+        v.address = v.address + OFFSET1
+    end
+
+    gg.addListItems(t)
+    gg.loadResults(t)
+    gg.clearList()
+
+    gg.refineNumber(ITEMOFFSET, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(1)
+    gg.clearResults()
+
+    gg.addListItems(t)
+
+    local b = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(b) do
+        v.address = v.address - OFFSET2
+    end
+
+    gg.addListItems(b)
+
+    local RESET = gg.getListItems()
+    gg.clearList()
+
+    gg.searchNumber(ART, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(gg.getResultsCount())
+    gg.clearResults()
+
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(t) do
+        v.address = v.address - 0x48
+    end
+    gg.addListItems(t)
+    gg.loadResults(t)
+    gg.clearList()
+
+    gg.refineNumber("3", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(1)
+    gg.clearResults()
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(t) do
+        v.address = v.address - 0x8
+        v.flags = gg.TYPE_QWORD
+    end
+    gg.addListItems(t)
+
+    local t = gg.loadResults(gg.getListItems())
+    gg.clearList()
+    gg.addListItems(RESET)
+
+    local saved_list = gg.getListItems()
+    local search_results = gg.getResults(gg.getResultsCount())
+
+    for i in ipairs(saved_list) do
+        saved_list[i].value = search_results[i].address
+    end
+
+    gg.setValues(saved_list)
+    gg.clearList()
+    gg.clearResults()
+    gg.toast("Art Nouveau Zone Success")
+end
+
+function OldTownHouse()
+    gg.clearList()
+    gg.clearResults()
+
+    gg.searchNumber(TAMAN, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(gg.getResultsCount())
+    gg.clearResults()
+
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(t) do
+        v.address = v.address + OFFSET1
+    end
+
+    gg.addListItems(t)
+    gg.loadResults(t)
+    gg.clearList()
+
+    gg.refineNumber(ITEMOFFSET, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(1)
+    gg.clearResults()
+
+    gg.addListItems(t)
+
+    local b = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(b) do
+        v.address = v.address - OFFSET2
+    end
+
+    gg.addListItems(b)
+
+    local RESET = gg.getListItems()
+    gg.clearList()
+
+    gg.searchNumber(OLD, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(gg.getResultsCount())
+    gg.clearResults()
+
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(t) do
+        v.address = v.address - 0x48
+    end
+    gg.addListItems(t)
+    gg.loadResults(t)
+    gg.clearList()
+
+    gg.refineNumber("3", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(1)
+    gg.clearResults()
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(t) do
+        v.address = v.address - 0x8
+        v.flags = gg.TYPE_QWORD
+    end
+    gg.addListItems(t)
+
+    local t = gg.loadResults(gg.getListItems())
+    gg.clearList()
+    gg.addListItems(RESET)
+
+    local saved_list = gg.getListItems()
+    local search_results = gg.getResults(gg.getResultsCount())
+
+    for i in ipairs(saved_list) do
+        saved_list[i].value = search_results[i].address
+    end
+
+    gg.setValues(saved_list)
+    gg.clearList()
+    gg.clearResults()
+    gg.toast("Old Town House Success")
+end
+
+function LatinAmericaZone()
+    gg.clearList()
+    gg.clearResults()
+
+    gg.searchNumber(TAMAN, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(gg.getResultsCount())
+    gg.clearResults()
+
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(t) do
+        v.address = v.address + OFFSET1
+    end
+
+    gg.addListItems(t)
+    gg.loadResults(t)
+    gg.clearList()
+
+    gg.refineNumber(ITEMOFFSET, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(1)
+    gg.clearResults()
+
+    gg.addListItems(t)
+
+    local b = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(b) do
+        v.address = v.address - OFFSET2
+    end
+
+    gg.addListItems(b)
+
+    local RESET = gg.getListItems()
+    gg.clearList()
+
+    gg.searchNumber(LATIN, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(gg.getResultsCount())
+    gg.clearResults()
+
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(t) do
+        v.address = v.address - 0x48
+    end
+    gg.addListItems(t)
+    gg.loadResults(t)
+    gg.clearList()
+
+    gg.refineNumber("3", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(1)
+    gg.clearResults()
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(t) do
+        v.address = v.address - 0x8
+        v.flags = gg.TYPE_QWORD
+    end
+    gg.addListItems(t)
+
+    local t = gg.loadResults(gg.getListItems())
+    gg.clearList()
+    gg.addListItems(RESET)
+
+    local saved_list = gg.getListItems()
+    local search_results = gg.getResults(gg.getResultsCount())
+
+    for i in ipairs(saved_list) do
+        saved_list[i].value = search_results[i].address
+    end
+
+    gg.setValues(saved_list)
+    gg.clearList()
+    gg.clearResults()
+    gg.toast("Latin America Zone Success")
+end
+
+function ParisianZone()
+    gg.clearList()
+    gg.clearResults()
+
+    gg.searchNumber(TAMAN, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(gg.getResultsCount())
+    gg.clearResults()
+
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(t) do
+        v.address = v.address + OFFSET1
+    end
+
+    gg.addListItems(t)
+    gg.loadResults(t)
+    gg.clearList()
+
+    gg.refineNumber(ITEMOFFSET, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(1)
+    gg.clearResults()
+
+    gg.addListItems(t)
+
+    local b = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(b) do
+        v.address = v.address - OFFSET2
+    end
+
+    gg.addListItems(b)
+
+    local RESET = gg.getListItems()
+    gg.clearList()
+
+    gg.searchNumber(PARIS, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(gg.getResultsCount())
+    gg.clearResults()
+
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(t) do
+        v.address = v.address - 0x48
+    end
+    gg.addListItems(t)
+    gg.loadResults(t)
+    gg.clearList()
+
+    gg.refineNumber("3", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(1)
+    gg.clearResults()
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(t) do
+        v.address = v.address - 0x8
+        v.flags = gg.TYPE_QWORD
+    end
+    gg.addListItems(t)
+
+    local t = gg.loadResults(gg.getListItems())
+    gg.clearList()
+    gg.addListItems(RESET)
+
+    local saved_list = gg.getListItems()
+    local search_results = gg.getResults(gg.getResultsCount())
+
+    for i in ipairs(saved_list) do
+        saved_list[i].value = search_results[i].address
+    end
+
+    gg.setValues(saved_list)
+    gg.clearList()
+    gg.clearResults()
+    gg.toast("Parisian Zone Success")
+end
+
+function LondonTownZone()
+    gg.clearList()
+    gg.clearResults()
+
+    gg.searchNumber(TAMAN, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(gg.getResultsCount())
+    gg.clearResults()
+
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(t) do
+        v.address = v.address + OFFSET1
+    end
+
+    gg.addListItems(t)
+    gg.loadResults(t)
+    gg.clearList()
+
+    gg.refineNumber(ITEMOFFSET, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(1)
+    gg.clearResults()
+
+    gg.addListItems(t)
+
+    local b = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(b) do
+        v.address = v.address - OFFSET2
+    end
+
+    gg.addListItems(b)
+
+    local RESET = gg.getListItems()
+    gg.clearList()
+
+    gg.searchNumber(LONDON, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(gg.getResultsCount())
+    gg.clearResults()
+
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(t) do
+        v.address = v.address - 0x48
+    end
+    gg.addListItems(t)
+    gg.loadResults(t)
+    gg.clearList()
+
+    gg.refineNumber("3", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(1)
+    gg.clearResults()
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(t) do
+        v.address = v.address - 0x8
+        v.flags = gg.TYPE_QWORD
+    end
+    gg.addListItems(t)
+
+    local t = gg.loadResults(gg.getListItems())
+    gg.clearList()
+    gg.addListItems(RESET)
+
+    local saved_list = gg.getListItems()
+    local search_results = gg.getResults(gg.getResultsCount())
+
+    for i in ipairs(saved_list) do
+        saved_list[i].value = search_results[i].address
+    end
+
+    gg.setValues(saved_list)
+    gg.clearList()
+    gg.clearResults()
+    gg.toast("London Town Success")
+end
+
+function TokyoTownZone()
+    gg.clearList()
+    gg.clearResults()
+
+    gg.searchNumber(TAMAN, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(gg.getResultsCount())
+    gg.clearResults()
+
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(t) do
+        v.address = v.address + OFFSET1
+    end
+
+    gg.addListItems(t)
+    gg.loadResults(t)
+    gg.clearList()
+
+    gg.refineNumber(ITEMOFFSET, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(1)
+    gg.clearResults()
+
+    gg.addListItems(t)
+
+    local b = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(b) do
+        v.address = v.address - OFFSET2
+    end
+
+    gg.addListItems(b)
+
+    local RESET = gg.getListItems()
+    gg.clearList()
+
+    gg.searchNumber(TOKYO, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(gg.getResultsCount())
+    gg.clearResults()
+
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(t) do
+        v.address = v.address + 0x90
+    end
+    gg.addListItems(t)
+    gg.loadResults(t)
+    gg.clearList()
+
+    gg.refineNumber("-4928453024248687536", gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(1)
+    gg.clearResults()
+
+    gg.addListItems(t)
+
+    local b = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(b) do
+        v.address = v.address - 0x70
+    end
+
+    gg.addListItems(t)
+    local t = gg.loadResults(gg.getListItems())
+    gg.clearList()
+    gg.addListItems(RESET)
+
+    local saved_list = gg.getListItems()
+    local search_results = gg.getResults(gg.getResultsCount())
+
+    for i in ipairs(saved_list) do
+        saved_list[i].value = search_results[i].address
+    end
+
+    gg.setValues(saved_list)
+    gg.clearList()
+    gg.clearResults()
+    gg.toast("Tokyo Town Zone Success")
+end
+
+function OmegaZone()
+    gg.clearList()
+    gg.clearResults()
+
+    gg.searchNumber(TAMAN, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(gg.getResultsCount())
+    gg.clearResults()
+
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(t) do
+        v.address = v.address + OFFSET1
+    end
+
+    gg.addListItems(t)
+    gg.loadResults(t)
+    gg.clearList()
+
+    gg.refineNumber(ITEMOFFSET, gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(1)
+    gg.clearResults()
+
+    gg.addListItems(t)
+
+    local b = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(b) do
+        v.address = v.address - OFFSET2
+    end
+
+    gg.addListItems(b)
+
+    local RESET = gg.getListItems()
+    gg.clearList()
+
+    gg.searchNumber(OMEGA, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(gg.getResultsCount())
+    gg.clearResults()
+
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(t) do
+        v.address = v.address - 0x48
+    end
+    gg.addListItems(t)
+    gg.loadResults(t)
+    gg.clearList()
+
+    gg.refineNumber("3", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(1)
+    gg.clearResults()
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(t) do
+        v.address = v.address - 0x8
+        v.flags = gg.TYPE_QWORD
+    end
+    gg.addListItems(t)
+
+    local t = gg.loadResults(gg.getListItems())
+    gg.clearList()
+    gg.addListItems(RESET)
+
+    local saved_list = gg.getListItems()
+    local search_results = gg.getResults(gg.getResultsCount())
+
+    for i in ipairs(saved_list) do
+        saved_list[i].value = search_results[i].address
+    end
+
+    gg.setValues(saved_list)
+    gg.clearList()
+    gg.clearResults()
+    gg.toast("Omega Zone Success")
 end
 
 -- arm64-v8a | 64bit End
