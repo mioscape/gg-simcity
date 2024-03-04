@@ -32,15 +32,16 @@ function GGPrompt(title)
             { "number" }
         )
 
+    local isNumber = tonumber(Prompt[1])
+
     if Prompt == nil then
-        gg.alert("The value cannot be empty")
         Arm64v8a()
     elseif Prompt[1] == "" then
         gg.alert("The value cannot be empty")
-        Arm64v8a()
-    elseif Prompt[1] == "0" then
-        gg.alert("The value cannot be 0")
-        Arm64v8a()
+        ExpfromMetal()
+    elseif isNumber == nil then
+        gg.alert("The value cannot be non-numeric")
+        ExpfromMetal()
     else
         return Prompt[1]
     end
