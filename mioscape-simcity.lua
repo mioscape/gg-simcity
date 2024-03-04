@@ -44,25 +44,27 @@ local FROZEN = "-2038647854"
 local LIMINSTONE = "46404375"
 
 local MaxCityStorageMenuAlert =
-"Pastikan City Storage masih di angka 40 (termasuk Bangunan City Storage)\n-----\nMake sure City Storage is still at 40 (including City Storage Buildings)"
+    "Pastikan City Storage masih di angka 40 (termasuk Bangunan City Storage)\n-----\nMake sure City Storage is still at 40 (including City Storage Buildings)"
 local MaxOmegaStorageMenuAlert =
-"Pastikan Omega Storage masih di angka 15 (termasuk Bangunan Omega Storage)\n-----\nMake sure Omega Storage is still at 15 (including Omega Storage Buildings)"
+    "Pastikan Omega Storage masih di angka 15 (termasuk Bangunan Omega Storage)\n-----\nMake sure Omega Storage is still at 15 (including Omega Storage Buildings)"
 local MaxNeoBankMenuAlert =
-"Pastikan Neo Bank masih di angka 8000 (termasuk Bangunan Neo Bank)\n-----\nMake sure Neo Bank is still at 8000 (including Neo Bank Buildings)"
+    "Pastikan Neo Bank masih di angka 8000 (termasuk Bangunan Neo Bank)\n-----\nMake sure Neo Bank is still at 8000 (including Neo Bank Buildings)"
 local ExpfromMetalMenuAlert =
-"Experience dari Metal akan berubah sampai tombol bertulisan Sx ditekan\n-----\nExperience from Metal will change until the button labeled Sx is pressed"
+    "Experience dari Metal akan berubah sampai tombol bertulisan Sx ditekan\n-----\nExperience from Metal will change until the button labeled Sx is pressed"
 local MayorPassMenuAlert =
-"Script ini akan membuat point Plumbob menjadi Mines (-)\n-----\nThis script will make the Plumbob point into Mines (-)"
+    "Script ini akan membuat point Plumbob menjadi Mines (-)\n-----\nThis script will make the Plumbob point into Mines (-)"
+local PopulationNewResidentialZoneAlert =
+    "10.000.000 Populasi dari Membangun Bangunan Baru Zona Residensial. Tidak Permanen, akan reset setelah login ulang.\n-----\n10.000.000 Population from Building New Residential Zone. It's not permanent, it will reset after re-login."
 
 function GGPrompt(title)
     Prompt =
         gg.prompt(
-            {
-                title
-            },
-            { "" },
-            { "number" }
-        )
+        {
+            title
+        },
+        {""},
+        {"number"}
+    )
 
     local isNumber = tonumber(Prompt[1])
 
@@ -98,14 +100,14 @@ function Main()
         if MIO == 1 then
             MENU =
                 gg.choice(
-                    {
-                        "\n[arm64-v8a | 64bit]\n",
-                        "\n[armebi-v7a | 32bit]\n",
-                        "\n[Back to Loader]\n"
-                    },
-                    nil,
-                    ScriptDescription
-                )
+                {
+                    "\n[arm64-v8a | 64bit]\n",
+                    "\n[armebi-v7a | 32bit]\n",
+                    "\n[Back to Loader]\n"
+                },
+                nil,
+                ScriptDescription
+            )
             if MENU == nil then
             else
                 if MENU == 1 then
@@ -137,14 +139,14 @@ function SubMain64()
         if MIO == 1 then
             MENU =
                 gg.choice(
-                    {
-                        "\n[SimCity General]\n",
-                        "\n[SimCity Building]\n",
-                        "\n[Back]\n"
-                    },
-                    nil,
-                    ScriptDescription
-                )
+                {
+                    "\n[SimCity General]\n",
+                    "\n[SimCity Building]\n",
+                    "\n[Back]\n"
+                },
+                nil,
+                ScriptDescription
+            )
             if MENU == nil then
             else
                 if MENU == 1 then
@@ -173,25 +175,27 @@ function Arm64v8a()
         if MIO == 1 then
             MENU =
                 gg.choice(
-                    {
-                        "\n[Max City Storage]\n",
-                        "\n[Max Omega Storage]\n",
-                        "\n[Max Neo Bank]\n",
-                        "\n[Experience from Metal]\n",
-                        "\n[Omega Services]\n",
-                        "\n[Unlock Neo Mall]\n",
-                        "\n[Unlock Air Port]\n",
-                        "\n[Unlock Vu's Tower Max Level]\n",
-                        "\n[Unlock Cargo Ship]\n",
-                        "\n[Unlock Vu's Pass]\n",
-                        "\n[Unlock Mayor Pass]\n",
-                        "\n[Upgrade Shop Building]\n",
-                        "\n[Instant Production Time & Exclude Item Requirement]\n",
-                        "\n[Back]\n"
-                    },
-                    nil,
-                    ScriptDescription
-                )
+                {
+                    "\n[Max City Storage]\n",
+                    "\n[Max Omega Storage]\n",
+                    "\n[Max Neo Bank]\n",
+                    "\n[Experience from Metal]\n",
+                    "\n[Omega Services]\n",
+                    "\n[Unlock Neo Mall]\n",
+                    "\n[Unlock Air Port]\n",
+                    "\n[Unlock Vu's Tower Max Level]\n",
+                    "\n[Unlock Cargo Ship]\n",
+                    "\n[Unlock Vu's Pass]\n",
+                    "\n[Unlock Mayor Pass]\n",
+                    "\n[Upgrade Shop Building]\n",
+                    "\n[Instant Production Time & Exclude Item Requirement]\n",
+                    "\n[NEW!] | [Buldozing & Keeping Restricted Building]\n",
+                    "\n[NEW!] | [10.000.000 Population from New Residential Zone]\n",
+                    "\n[Back]\n"
+                },
+                nil,
+                ScriptDescription
+            )
             if MENU == nil then
             else
                 if MENU == 1 then
@@ -235,6 +239,12 @@ function Arm64v8a()
                     ExcludeItemRequirement()
                 end
                 if MENU == 14 then
+                    BuldozingKeepingRestrictedBuilding()
+                end
+                if MENU == 15 then
+                    Alert(PopulationNewResidentialZoneAlert, "Next", "Cancel", PopulationNewResidentialZone, Arm64v8a)
+                end
+                if MENU == 16 then
                     SubMain64()
                 end
             end
@@ -344,17 +354,17 @@ end
 function OmegaServices()
     local OmegaServicesCheckbox =
         gg.prompt(
-            {
-                "\n[Wind Power Plant > OMEGA Power Plant]\n",
-                "\n[Basic Water Tower > OMEGA Water Tower]\n",
-                "\n[Small Sewage Outflow Pipe > OMEGA Sewage Treatment]\n",
-                "\n[Small Garbage Dump > OMEGA Recycling Center]\n",
-                "\n[Small Fire Station > Maxis Manor]\n",
-                "\n[Small Factory > Nano Factory]\n"
-            },
-            nil,
-            { "checkbox", "checkbox", "checkbox", "checkbox", "checkbox", "checkbox" }
-        )
+        {
+            "\n[Wind Power Plant > OMEGA Power Plant]\n",
+            "\n[Basic Water Tower > OMEGA Water Tower]\n",
+            "\n[Small Sewage Outflow Pipe > OMEGA Sewage Treatment]\n",
+            "\n[Small Garbage Dump > OMEGA Recycling Center]\n",
+            "\n[Small Fire Station > Maxis Manor]\n",
+            "\n[Small Factory > Nano Factory]\n"
+        },
+        nil,
+        {"checkbox", "checkbox", "checkbox", "checkbox", "checkbox", "checkbox"}
+    )
     if OmegaServicesCheckbox == nil then
         gg.toast("Canceled")
         Arm64v8a()
@@ -409,11 +419,11 @@ function OmegaServices()
         end
         if
             OmegaServicesCheckbox[1] == false and OmegaServicesCheckbox[2] == false and
-            OmegaServicesCheckbox[3] == false and
-            OmegaServicesCheckbox[4] == false and
-            OmegaServicesCheckbox[5] == false and
-            OmegaServicesCheckbox[6] == false
-        then
+                OmegaServicesCheckbox[3] == false and
+                OmegaServicesCheckbox[4] == false and
+                OmegaServicesCheckbox[5] == false and
+                OmegaServicesCheckbox[6] == false
+         then
             gg.alert("Tick at least one checkbox")
             OmegaServices()
         else
@@ -520,30 +530,30 @@ end
 function UpgradeShopLevel()
     local UpgradeShopLevelCheckbox =
         gg.prompt(
-            {
-                "\n[Building Supplies Store]\n",
-                "\n[Hardware Store]\n",
-                "\n[Farmer's Market]\n",
-                "\n[Furniture Store]\n",
-                "\n[Gardening Supplies Store]\n",
-                "\n[Donut Shop]\n",
-                "\n[Fashion Store]\n",
-                "\n[Fast Food Restaurant]\n",
-                "\n[Home Appliances Store]\n"
-            },
-            nil,
-            {
-                "checkbox",
-                "checkbox",
-                "checkbox",
-                "checkbox",
-                "checkbox",
-                "checkbox",
-                "checkbox",
-                "checkbox",
-                "checkbox"
-            }
-        )
+        {
+            "\n[Building Supplies Store]\n",
+            "\n[Hardware Store]\n",
+            "\n[Farmer's Market]\n",
+            "\n[Furniture Store]\n",
+            "\n[Gardening Supplies Store]\n",
+            "\n[Donut Shop]\n",
+            "\n[Fashion Store]\n",
+            "\n[Fast Food Restaurant]\n",
+            "\n[Home Appliances Store]\n"
+        },
+        nil,
+        {
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox"
+        }
+    )
     if UpgradeShopLevelCheckbox == nil then
         gg.toast("Canceled")
         Arm64v8a()
@@ -614,14 +624,14 @@ function UpgradeShopLevel()
         end
         if
             UpgradeShopLevelCheckbox[1] == false and UpgradeShopLevelCheckbox[2] == false and
-            UpgradeShopLevelCheckbox[3] == false and
-            UpgradeShopLevelCheckbox[4] == false and
-            UpgradeShopLevelCheckbox[5] == false and
-            UpgradeShopLevelCheckbox[6] == false and
-            UpgradeShopLevelCheckbox[7] == false and
-            UpgradeShopLevelCheckbox[8] == false and
-            UpgradeShopLevelCheckbox[9] == false
-        then
+                UpgradeShopLevelCheckbox[3] == false and
+                UpgradeShopLevelCheckbox[4] == false and
+                UpgradeShopLevelCheckbox[5] == false and
+                UpgradeShopLevelCheckbox[6] == false and
+                UpgradeShopLevelCheckbox[7] == false and
+                UpgradeShopLevelCheckbox[8] == false and
+                UpgradeShopLevelCheckbox[9] == false
+         then
             gg.alert("Tick at least one checkbox")
             UpgradeShopLevel()
         else
@@ -770,6 +780,102 @@ function ExcludeItemRequirement()
     gg.toast("Instant Production Time & Exclude Item Requirement")
 end
 
+function BuldozingKeepingRestrictedBuilding()
+    gg.clearList()
+    gg.clearResults()
+    gg.searchNumber(MAXIS, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(gg.getResultsCount())
+    gg.clearResults()
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(t) do
+        v.address = v.address - 0x48
+    end
+    gg.addListItems(t)
+    gg.loadResults(t)
+    gg.clearList()
+
+    gg.refineNumber("3", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(1)
+    gg.clearResults()
+    gg.addListItems(t)
+    local tb = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(tb) do
+        v.address = v.address - 0x8
+    end
+    gg.addListItems(tb)
+
+    gg.sleep(500)
+    local ttt = gg.getListItems()
+    gg.clearList()
+
+    gg.searchNumber(ttt[1].value, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(2000)
+    gg.clearResults()
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(t) do
+        v.address = v.address + 0x328
+        v.flags = gg.TYPE_DWORD
+        v.value = "-1"
+    end
+
+    gg.addListItems(t)
+    gg.setValues(t)
+
+    gg.sleep(1000)
+    gg.clearList()
+    gg.toast("Buldozer Succes")
+end
+
+function PopulationNewResidentialZone()
+    gg.searchNumber("-302186785", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(gg.getResultsCount())
+    gg.clearResults()
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(t) do
+        v.address = v.address - 0x48
+    end
+    gg.addListItems(t)
+    gg.loadResults(t)
+    gg.clearList()
+
+    gg.refineNumber("15", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+
+    local t = gg.getResults(1)
+    gg.clearResults()
+    gg.addListItems(t)
+
+    local t = gg.getListItems()
+    gg.clearList()
+
+    for i, v in ipairs(t) do
+        v.address = v.address + 0x94
+        v.flags = gg.TYPE_DWORD
+        v.value = "10000000"
+    end
+
+    gg.addListItems(t)
+    gg.setValues(t)
+    gg.clearList()
+end
+
 function Arm64v8aBuilding()
     while true do
         if gg.isVisible(true) then
@@ -779,16 +885,16 @@ function Arm64v8aBuilding()
         if MIO == 1 then
             MENU =
                 gg.choice(
-                    {
-                        "\n[Residential Zone]\n",
-                        "\n[Epic Building]\n",
-                        "\n[Regional Building]\n",
-                        "\n[Season Pass Building]\n",
-                        "\n[Back]\n"
-                    },
-                    nil,
-                    ScriptDescription
-                )
+                {
+                    "\n[Residential Zone]\n",
+                    "\n[Epic Building]\n",
+                    "\n[Regional Building]\n",
+                    "\n[Season Pass Building]\n",
+                    "\n[Back]\n"
+                },
+                nil,
+                ScriptDescription
+            )
             if MENU == nil then
             else
                 if MENU == 1 then
@@ -804,7 +910,7 @@ function Arm64v8aBuilding()
                     Armebiv7a()
                 end
                 if MENU == 5 then
-                    Arm64v8a()
+                    SubMain64()
                 end
             end
         end
@@ -821,20 +927,20 @@ function ResidentialZoneMenu()
         if MIO == 1 then
             MENU =
                 gg.choice(
-                    {
-                        "\n[Residential Zone]\n",
-                        "\n[Art Nouveau Zone]\n",
-                        "\n[Old Town House]\n",
-                        "\n[Latin America Zone]\n",
-                        "\n[Parisian Zone]\n",
-                        "\n[London Town Zone]\n",
-                        "\n[Tokyo Town Zone]\n",
-                        "\n[Omega Zone]\n",
-                        "\n[Back]\n"
-                    },
-                    nil,
-                    ScriptDescription
-                )
+                {
+                    "\n[Residential Zone]\n",
+                    "\n[Art Nouveau Zone]\n",
+                    "\n[Old Town House]\n",
+                    "\n[Latin America Zone]\n",
+                    "\n[Parisian Zone]\n",
+                    "\n[London Town Zone]\n",
+                    "\n[Tokyo Town Zone]\n",
+                    "\n[Omega Zone]\n",
+                    "\n[Back]\n"
+                },
+                nil,
+                ScriptDescription
+            )
             if MENU == nil then
             else
                 if MENU == 1 then
