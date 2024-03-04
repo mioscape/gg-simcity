@@ -101,48 +101,9 @@ function Main()
             MENU =
                 gg.choice(
                 {
-                    "\n[arm64-v8a | 64bit]\n",
-                    "\n[armebi-v7a | 32bit]\n",
-                    "\n[Back to Loader]\n"
-                },
-                nil,
-                ScriptDescription
-            )
-            if MENU == nil then
-            else
-                if MENU == 1 then
-                    SubMain64()
-                end
-                if MENU == 2 then
-                    Armebiv7a()
-                end
-                if MENU == 3 then
-                    TG = gg.makeRequest("https://ihya.dev/gg-loader/mioscape-loader.lua").content
-                    if not TG then
-                        os.exit()
-                    else
-                        pcall(load(TG))
-                    end
-                end
-            end
-        end
-        MIO = -1
-    end
-end
-
-function SubMain64()
-    while true do
-        if gg.isVisible(true) then
-            MIO = 1
-            gg.setVisible(false)
-        end
-        if MIO == 1 then
-            MENU =
-                gg.choice(
-                {
                     "\n[SimCity General]\n",
                     "\n[SimCity Building]\n",
-                    "\n[Back]\n"
+                    "\n[Back to Loader]\n"
                 },
                 nil,
                 ScriptDescription
@@ -156,7 +117,12 @@ function SubMain64()
                     Arm64v8aBuilding()
                 end
                 if MENU == 3 then
-                    Main()
+                    TG = gg.makeRequest("https://ihya.dev/gg-loader/mioscape-loader.lua").content
+                    if not TG then
+                        os.exit()
+                    else
+                        pcall(load(TG))
+                    end
                 end
             end
         end
@@ -245,7 +211,7 @@ function Arm64v8a()
                     Alert(PopulationNewResidentialZoneAlert, "Next", "Cancel", PopulationNewResidentialZone, Arm64v8a)
                 end
                 if MENU == 16 then
-                    SubMain64()
+                    Main()
                 end
             end
         end
@@ -910,7 +876,7 @@ function Arm64v8aBuilding()
                     Armebiv7a()
                 end
                 if MENU == 5 then
-                    SubMain64()
+                    Main()
                 end
             end
         end
