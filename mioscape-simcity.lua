@@ -70,7 +70,7 @@ function GGPrompt(title)
         {"number"}
     )
 
-    local isNumber = tonumber(Prompt[1])
+    local isNumber = tonumber(Prompt)
 
     if Prompt == nil then
         Arm64v8a()
