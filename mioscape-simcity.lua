@@ -914,6 +914,7 @@ function MayorPassBuilding()
                     "\n[Season 38 | Historic Prague]\n",
                     "\n[Season 37 | Thailand]\n",
                     "\n[Season 36 | Lapland of Today]\n",
+                    "\n[Season 35 | Super Services]\n",
                     "\n[Back]\n"
                 },
                 nil,
@@ -931,11 +932,116 @@ function MayorPassBuilding()
                     Alert(SeasonBuildingAlert, "Next", "Cancel", Season36, MayorPassBuilding)
                 end
                 if MENU == 4 then
+                    Alert(SeasonBuildingAlert, "Next", "Cancel", Season35, MayorPassBuilding)
+                end
+                if MENU == 4 then
                     Arm64v8aBuilding()
                 end
             end
         end
         MIO = -1
+    end
+end
+
+function Season35()
+    local Season35Checkbox =
+        gg.prompt(
+        {
+            "\n[Wind Power Plant > Garbage Incinerator V2]\n",
+            "\n[Basic Water Tower > Sewage Plant V2]\n",
+            "\n[Small Sewage Outflow Pipe > Solar Power Farm V1]\n",
+            "\n[Small Garbage Dump > Water Pumping Station V2]\n",
+            "\n[Small Fire Station > Large Fire Station V2]\n",
+            "\n[Small Police Station > Police Precinct V2]\n",
+            "\n[Small Health Clinic > Hospital V2]\n",
+            "\n[Small Fountain Park > Maxis HQ]\n",
+        },
+        nil,
+        {
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+        }
+    )
+    if Season35Checkbox == nil then
+        gg.toast("Canceled")
+        MayorPassBuilding()
+    else
+        if Season35Checkbox[1] then
+            gg.clearResults()
+            gg.searchNumber(WindPowerPlantValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("-1415031566", gg.TYPE_DWORD)
+            gg.toast("Wind Power Plant > Nordic Church")
+        end
+        if Season35Checkbox[2] then
+            gg.clearResults()
+            gg.searchNumber(BasicWaterTowerValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("-12118106", gg.TYPE_DWORD)
+            gg.toast("Basic Water Tower > Northern Museum")
+        end
+        if Season35Checkbox[3] then
+            gg.clearResults()
+            gg.searchNumber(SmallSewageOutflowPipeValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("-747375459", gg.TYPE_DWORD)
+            gg.toast("Small Sewage Outflow Pipe > Arctic Aquarium")
+        end
+        if Season35Checkbox[4] then
+            gg.clearResults()
+            gg.searchNumber(SmallGarbageDumpValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("1575952079", gg.TYPE_DWORD)
+            gg.toast("Small Garbage Dump > Lofoten")
+        end
+        if Season35Checkbox[5] then
+            gg.clearResults()
+            gg.searchNumber(SmallFireStationValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("1840116317", gg.TYPE_DWORD)
+            gg.toast("Small Fire Station > Lean Library")
+        end
+        if Season35Checkbox[6] then
+            gg.clearResults()
+            gg.searchNumber(SmallPoliceStationValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("898048097", gg.TYPE_DWORD)
+            gg.toast("Small Police Station > Treehouse Resort")
+        end
+        if Season35Checkbox[7] then
+            gg.clearResults()
+            gg.searchNumber(SmallHealthClinicValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("850245360", gg.TYPE_DWORD)
+            gg.toast("Small Health Clinic > Reindeer Sled Ride")
+        end
+        if Season35Checkbox[8] then
+            gg.clearResults()
+            gg.searchNumber(SmallFountainParkValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("1579400415", gg.TYPE_DWORD)
+            gg.toast("Small Fountain Park > Swimming Sauna")
+        end
+        if
+            Season35Checkbox[1] == false and Season35Checkbox[2] == false and Season35Checkbox[3] == false and
+                Season35Checkbox[4] == false and
+                Season35Checkbox[5] == false and
+                Season35Checkbox[6] == false and
+                Season35Checkbox[7] == false and
+                Season35Checkbox[8] == false
+         then
+            gg.alert("Tick at least one checkbox")
+            UpgradeShopLevel()
+        else
+            gg.sleep(2000)
+            gg.toast("Please Go To Daniel's City")
+        end
     end
 end
 
