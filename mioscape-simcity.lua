@@ -16,6 +16,18 @@ local VuPassValue = "-7995824390300544013"
 local MayorPassValue = "-7992622555426941375"
 local MAXIS = "925375395"
 
+local SmallFactoryValue = "612373322"
+
+local WindPowerPlantValue = "751144117"
+local BasicWaterTowerValue = "139346164"
+local SmallSewageOutflowPipeValue = "182280403"
+local SmallGarbageDumpValue = "-741284489"
+local SmallFireStationValue = "583140736"
+local SmallPoliceStationValue = "-1470979549"
+local SmallHealthClinicValue = "-1568621139"
+local SmallFountainParkValue = "-278168705"
+local CoalPowerPlantValue = "960415804"
+
 local TAMAN = "4635382469820688998"
 local ITEMOFFSET = "-3527480595996367819"
 local OFFSET1 = "0x60"
@@ -340,7 +352,7 @@ function OmegaServices()
     else
         if OmegaServicesCheckbox[1] then
             gg.clearResults()
-            gg.searchNumber("751144117", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
+            gg.searchNumber(WindPowerPlantValue, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
             gg.getResults(100)
             gg.editAll(" -857301703 ", gg.TYPE_DWORD)
             gg.clearResults()
@@ -348,7 +360,7 @@ function OmegaServices()
         end
         if OmegaServicesCheckbox[2] then
             gg.clearResults()
-            gg.searchNumber(" 139346164 ", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
+            gg.searchNumber(BasicWaterTowerValue, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
             gg.getResults(100)
             gg.editAll(" -1257426322 ", gg.TYPE_DWORD)
             gg.clearResults()
@@ -356,7 +368,7 @@ function OmegaServices()
         end
         if OmegaServicesCheckbox[3] then
             gg.clearResults()
-            gg.searchNumber(" 182280403 ", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
+            gg.searchNumber(SmallSewageOutflowPipeValue, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
             gg.getResults(100)
             gg.editAll(" -212043960 ", gg.TYPE_DWORD)
             gg.clearResults()
@@ -364,7 +376,7 @@ function OmegaServices()
         end
         if OmegaServicesCheckbox[4] then
             gg.clearResults()
-            gg.searchNumber("-741284489", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
+            gg.searchNumber(SmallGarbageDumpValue, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
             gg.getResults(100)
             gg.editAll("-535421151", gg.TYPE_DWORD)
             gg.clearResults()
@@ -372,7 +384,7 @@ function OmegaServices()
         end
         if OmegaServicesCheckbox[5] then
             gg.clearResults()
-            gg.searchNumber("583140736", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
+            gg.searchNumber(SmallFireStationValue, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
             gg.getResults(100)
             gg.editAll("925375395", gg.TYPE_DWORD)
             gg.clearResults()
@@ -380,7 +392,7 @@ function OmegaServices()
         end
         if OmegaServicesCheckbox[6] then
             gg.clearResults()
-            gg.searchNumber("612373322", gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
+            gg.searchNumber(SmallFactoryValue, gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1)
             gg.getResults(100)
             gg.editAll("734850349 ", gg.TYPE_DWORD)
             gg.clearResults()
@@ -951,63 +963,63 @@ function Season38()
     else
         if Season38Checkbox[1] then
             gg.clearResults()
-            gg.searchNumber(" 751144117 ", gg.TYPE_DWORD)
+            gg.searchNumber(WindPowerPlantValue, gg.TYPE_DWORD)
             gg.getResults(200)
             gg.editAll("-1042592443", gg.TYPE_DWORD)
             gg.toast("Wind Power Plant > Prague Powder Tower")
         end
         if Season38Checkbox[2] then
             gg.clearResults()
-            gg.searchNumber(" 139346164 ", gg.TYPE_DWORD)
+            gg.searchNumber(BasicWaterTowerValue, gg.TYPE_DWORD)
             gg.getResults(200)
             gg.editAll("-971391086", gg.TYPE_DWORD)
             gg.toast("Basic Water Tower > Prague Charles Bridge")
         end
         if Season38Checkbox[3] then
             gg.clearResults()
-            gg.searchNumber("182280403", gg.TYPE_DWORD)
+            gg.searchNumber(SmallSewageOutflowPipeValue, gg.TYPE_DWORD)
             gg.getResults(200)
             gg.editAll("-84591751", gg.TYPE_DWORD)
             gg.toast("Small Sewage Outflow Pipe > Prague Quadrio Center")
         end
         if Season38Checkbox[4] then
             gg.clearResults()
-            gg.searchNumber("-741284489", gg.TYPE_DWORD)
+            gg.searchNumber(SmallGarbageDumpValue, gg.TYPE_DWORD)
             gg.getResults(200)
             gg.editAll("1544098790", gg.TYPE_DWORD)
             gg.toast("Small Garbage Dump > Prague Petrin Tower")
         end
         if Season38Checkbox[5] then
             gg.clearResults()
-            gg.searchNumber("583140736", gg.TYPE_DWORD)
+            gg.searchNumber(SmallFireStationValue, gg.TYPE_DWORD)
             gg.getResults(200)
             gg.editAll("-2099908710", gg.TYPE_DWORD)
             gg.toast("Small Fire Station > Prague Old Town Square")
         end
         if Season38Checkbox[6] then
             gg.clearResults()
-            gg.searchNumber(" -150077002", gg.TYPE_DWORD)
+            gg.searchNumber(SmallPoliceStationValue, gg.TYPE_DWORD)
             gg.getResults(200)
             gg.editAll("1073072576", gg.TYPE_DWORD)
             gg.toast("Small Police Station > Prague Castleu")
         end
         if Season38Checkbox[7] then
             gg.clearResults()
-            gg.searchNumber(" -66177429", gg.TYPE_DWORD)
+            gg.searchNumber(SmallHealthClinicValue, gg.TYPE_DWORD)
             gg.getResults(200)
             gg.editAll("367160678", gg.TYPE_DWORD)
             gg.toast("Small Health Clinic > Prague National Theatre")
         end
         if Season38Checkbox[8] then
             gg.clearResults()
-            gg.searchNumber(" -1672104106", gg.TYPE_DWORD)
+            gg.searchNumber(SmallFountainParkValue, gg.TYPE_DWORD)
             gg.getResults(200)
             gg.editAll("892518849", gg.TYPE_DWORD)
             gg.toast("Small Fountain Park > Prague Zizkov Tower")
         end
         if Season38Checkbox[9] then
             gg.clearResults()
-            gg.searchNumber(" -1297331478", gg.TYPE_DWORD)
+            gg.searchNumber(CoalPowerPlantValue, gg.TYPE_DWORD)
             gg.getResults(200)
             gg.editAll("404602461", gg.TYPE_DWORD)
             gg.toast("Coal Power Plant > Prague Petrin Cathedral")
