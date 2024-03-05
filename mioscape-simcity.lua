@@ -27,6 +27,7 @@ local SmallPoliceStationValue = "-1470979549"
 local SmallHealthClinicValue = "-1568621139"
 local SmallFountainParkValue = "-278168705"
 local CoalPowerPlantValue = "960415804"
+local SolarPowerPlantValue = "43959869"
 
 local TAMAN = "4635382469820688998"
 local ITEMOFFSET = "-3527480595996367819"
@@ -912,6 +913,7 @@ function MayorPassBuilding()
                 {
                     "\n[Season 38 | Historic Prague]\n",
                     "\n[Season 37 | Thailand]\n",
+                    "\n[Season 36 | Lapland of Today]\n",
                     "\n[Back]\n"
                 },
                 nil,
@@ -925,12 +927,137 @@ function MayorPassBuilding()
                 if MENU == 2 then
                     Alert(SeasonBuildingAlert, "Next", "Cancel", Season37, MayorPassBuilding)
                 end
-                if MENU == 2 then
+                if MENU == 3 then
+                    Alert(SeasonBuildingAlert, "Next", "Cancel", Season36, MayorPassBuilding)
+                end
+                if MENU == 4 then
                     Arm64v8aBuilding()
                 end
             end
         end
         MIO = -1
+    end
+end
+
+function Season36()
+    local Season36Checkbox =
+        gg.prompt(
+        {
+            "\n[Wind Power Plant > Nordic Church]\n",
+            "\n[Basic Water Tower > Northern Museum]\n",
+            "\n[Small Sewage Outflow Pipe > Arctic Aquarium]\n",
+            "\n[Small Garbage Dump > Lofoten]\n",
+            "\n[Small Fire Station > Lean Library]\n",
+            "\n[Small Police Station > Treehouse Resort]\n",
+            "\n[Small Health Clinic > Reindeer Sled Ride]\n",
+            "\n[Small Fountain Park > Swimming Sauna]\n",
+            "\n[Coal Power Plant > Aurora Shack]\n",
+            "\n[Solar Power Plant > Ice Castle]\n"
+        },
+        nil,
+        {
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox"
+        }
+    )
+    if Season36Checkbox == nil then
+        gg.toast("Canceled")
+        MayorPassBuilding()
+    else
+        if Season36Checkbox[1] then
+            gg.clearResults()
+            gg.searchNumber(WindPowerPlantValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("-1961743034", gg.TYPE_DWORD)
+            gg.toast("Wind Power Plant > Nordic Church")
+        end
+        if Season36Checkbox[2] then
+            gg.clearResults()
+            gg.searchNumber(BasicWaterTowerValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("649295752", gg.TYPE_DWORD)
+            gg.toast("Basic Water Tower > Northern Museum")
+        end
+        if Season36Checkbox[3] then
+            gg.clearResults()
+            gg.searchNumber(SmallSewageOutflowPipeValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("-638228376", gg.TYPE_DWORD)
+            gg.toast("Small Sewage Outflow Pipe > Arctic Aquarium")
+        end
+        if Season36Checkbox[4] then
+            gg.clearResults()
+            gg.searchNumber(SmallGarbageDumpValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("-1515743305", gg.TYPE_DWORD)
+            gg.toast("Small Garbage Dump > Lofoten")
+        end
+        if Season36Checkbox[5] then
+            gg.clearResults()
+            gg.searchNumber(SmallFireStationValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("2138768342", gg.TYPE_DWORD)
+            gg.toast("Small Fire Station > Lean Library")
+        end
+        if Season36Checkbox[6] then
+            gg.clearResults()
+            gg.searchNumber(SmallPoliceStationValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("26934349", gg.TYPE_DWORD)
+            gg.toast("Small Police Station > Treehouse Resort")
+        end
+        if Season36Checkbox[7] then
+            gg.clearResults()
+            gg.searchNumber(SmallHealthClinicValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("-952555316", gg.TYPE_DWORD)
+            gg.toast("Small Health Clinic > Reindeer Sled Ride")
+        end
+        if Season36Checkbox[8] then
+            gg.clearResults()
+            gg.searchNumber(SmallFountainParkValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("466163634", gg.TYPE_DWORD)
+            gg.toast("Small Fountain Park > Swimming Sauna")
+        end
+        if Season36Checkbox[9] then
+            gg.clearResults()
+            gg.searchNumber(CoalPowerPlantValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("-1487561462", gg.TYPE_DWORD)
+            gg.toast("Coal Power Plant > Aurora Shack")
+        end
+        if Season36Checkbox[10] then
+            gg.clearResults()
+            gg.searchNumber(SolarPowerPlantValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("1708275201", gg.TYPE_DWORD)
+            gg.toast("Solar Power Plant > Ice Castle")
+        end
+        if
+            Season36Checkbox[1] == false and Season36Checkbox[2] == false and Season36Checkbox[3] == false and
+                Season36Checkbox[4] == false and
+                Season36Checkbox[5] == false and
+                Season36Checkbox[6] == false and
+                Season36Checkbox[7] == false and
+                Season36Checkbox[8] == false and
+                Season36Checkbox[9] == false and
+                Season36Checkbox[10] == false
+         then
+            gg.alert("Tick at least one checkbox")
+            UpgradeShopLevel()
+        else
+            gg.sleep(2000)
+            gg.toast("Please Go To Daniel's City")
+        end
     end
 end
 
