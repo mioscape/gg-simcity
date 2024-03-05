@@ -68,7 +68,7 @@ local MayorPassMenuAlert =
     "Script ini akan membuat point Plumbob menjadi Mines (-)\n-----\nThis script will make the Plumbob point into Mines (-)"
 local PopulationNewResidentialZoneAlert =
     "10.000.000 Populasi dari Membangun Bangunan Baru Zona Residensial. Tidak Permanen, akan reset setelah login ulang.\n-----\n10.000.000 Population from Building New Residential Zone. It's not permanent, it will reset after re-login."
-local Season38Alert =
+local SeasonBuildingAlert =
     "Pastikan Anda hanya menaruh tempat yang ingin diganti\n-----\nMake sure you only put the thing you want to change"
 
 gg.setRanges(gg.REGION_C_HEAP | gg.REGION_OTHER | gg.REGION_C_ALLOC)
@@ -911,6 +911,7 @@ function MayorPassBuilding()
                 gg.choice(
                 {
                     "\n[Season 38 | Historic Prague]\n",
+                    "\n[Season 37 | Thailand]\n",
                     "\n[Back]\n"
                 },
                 nil,
@@ -919,7 +920,10 @@ function MayorPassBuilding()
             if MENU == nil then
             else
                 if MENU == 1 then
-                    Alert(Season38Alert, "Next", "Cancel", Season38, MayorPassBuilding)
+                    Alert(SeasonBuildingAlert, "Next", "Cancel", Season38, MayorPassBuilding)
+                end
+                if MENU == 2 then
+                    Alert(SeasonBuildingAlert, "Next", "Cancel", Season37, MayorPassBuilding)
                 end
                 if MENU == 2 then
                     Arm64v8aBuilding()
@@ -927,6 +931,88 @@ function MayorPassBuilding()
             end
         end
         MIO = -1
+    end
+end
+
+function Season37()
+    local Season37Checkbox =
+        gg.prompt(
+        {
+            "\n[Wind Power Plant > Temple of Dawn]\n",
+            "\n[Basic Water Tower > Tusk Tower]\n",
+            "\n[Small Sewage Outflow Pipe > Pixel Tower]\n",
+            "\n[Small Garbage Dump > Dragon Temple]\n",
+            "\n[Small Fire Station > Robo Tower]\n",
+            "\n[Small Police Station > Phi Phi Island]\n",
+        },
+        nil,
+        {
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+        }
+    )
+    if Season37Checkbox == nil then
+        gg.toast("Canceled")
+        MayorPassBuilding()
+    else
+        if Season37Checkbox[1] then
+            gg.clearResults()
+            gg.searchNumber(WindPowerPlantValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("-518370055", gg.TYPE_DWORD)
+            gg.toast("Wind Power Plant > Temple of Dawn")
+        end
+        if Season37Checkbox[2] then
+            gg.clearResults()
+            gg.searchNumber(BasicWaterTowerValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("-811436871", gg.TYPE_DWORD)
+            gg.toast("Basic Water Tower > Tusk Tower")
+        end
+        if Season37Checkbox[3] then
+            gg.clearResults()
+            gg.searchNumber(SmallSewageOutflowPipeValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("208677870", gg.TYPE_DWORD)
+            gg.toast("Small Sewage Outflow Pipe > Pixel Tower")
+        end
+        if Season37Checkbox[4] then
+            gg.clearResults()
+            gg.searchNumber(SmallGarbageDumpValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("-1129122371", gg.TYPE_DWORD)
+            gg.toast("Small Garbage Dump > Dragon Temple")
+        end
+        if Season37Checkbox[5] then
+            gg.clearResults()
+            gg.searchNumber(SmallFireStationValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("1072852587", gg.TYPE_DWORD)
+            gg.toast("Small Fire Station > Robo Tower")
+        end
+        if Season37Checkbox[6] then
+            gg.clearResults()
+            gg.searchNumber(SmallPoliceStationValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("1747127097", gg.TYPE_DWORD)
+            gg.toast("Small Police Station > Phi Phi Island")
+        end
+        if
+            Season37Checkbox[1] == false and Season37Checkbox[2] == false and Season37Checkbox[3] == false and
+                Season37Checkbox[4] == false and
+                Season37Checkbox[5] == false and
+                Season37Checkbox[6] == false
+         then
+            gg.alert("Tick at least one checkbox")
+            UpgradeShopLevel()
+        else
+            gg.sleep(2000)
+            gg.toast("Please Go To Daniel's City")
+        end
     end
 end
 
