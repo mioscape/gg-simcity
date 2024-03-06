@@ -10,7 +10,7 @@ local GameVersion = "1.53.7.122261"
 local ScriptVersion = "0.10.2-dev"
 local ScriptDescription =
     "[SimCity BuildIt " .. GameVersion .. " " .. ArchInfoResult .. " bit | Mioscape SimCity v" .. ScriptVersion .. "]"
-    
+
 if gg.getTargetInfo().versionName == GameVersion then
 else
     gg.alert("WARNING: Game update detected. This script is made for SimCity BuildIt " .. GameVersion .. " only. Some pointers cant be work! Be carefully.")
@@ -874,9 +874,6 @@ function Arm64v8aBuilding()
             MENU =
                 gg.choice(
                 {
-                    "\n[Residential Zone]\n",
-                    "\n[Epic Building]\n",
-                    "\n[Regional Building]\n",
                     "\n[Mayor Pass Building]\n",
                     "\n[Back]\n"
                 },
@@ -886,18 +883,9 @@ function Arm64v8aBuilding()
             if MENU == nil then
             else
                 if MENU == 1 then
-                    Armebiv7a()
-                end
-                if MENU == 2 then
-                    Armebiv7a()
-                end
-                if MENU == 3 then
-                    Armebiv7a()
-                end
-                if MENU == 4 then
                     MayorPassBuilding()
                 end
-                if MENU == 5 then
+                if MENU == 2 then
                     Main()
                 end
             end
