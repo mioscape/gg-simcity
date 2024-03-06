@@ -7,13 +7,16 @@ if ArchInfo64 == true then
 end
 
 local GameVersion = "1.53.7.122261"
-local ScriptVersion = "0.10.2-dev"
+local ScriptVersion = "0.11.0-dev"
 local ScriptDescription =
     "[SimCity BuildIt " .. GameVersion .. " " .. ArchInfoResult .. " bit | Mioscape SimCity v" .. ScriptVersion .. "]"
 
 if gg.getTargetInfo().versionName == GameVersion then
 else
-    gg.alert("WARNING: Game update detected. This script is made for SimCity BuildIt " .. GameVersion .. " only. Some pointers cant be work! Be carefully.")
+    gg.alert(
+        "WARNING: Game update detected. This script is made for SimCity BuildIt " ..
+            GameVersion .. " only. Some pointers cant be work! Be carefully."
+    )
 end
 
 local FactoryValue = "-1935981107"
@@ -1169,7 +1172,7 @@ function Season35()
             "\n[Small Fire Station > Large Fire Station V2]\n",
             "\n[Small Police Station > Police Precinct V2]\n",
             "\n[Small Health Clinic > Hospital V2]\n",
-            "\n[Small Fountain Park > Maxis HQ]\n",
+            "\n[Small Fountain Park > Maxis HQ]\n"
         },
         nil,
         {
@@ -1180,7 +1183,7 @@ function Season35()
             "checkbox",
             "checkbox",
             "checkbox",
-            "checkbox",
+            "checkbox"
         }
     )
     if Season35Checkbox == nil then
@@ -1391,7 +1394,7 @@ function Season37()
             "\n[Small Sewage Outflow Pipe > Pixel Tower]\n",
             "\n[Small Garbage Dump > Dragon Temple]\n",
             "\n[Small Fire Station > Robo Tower]\n",
-            "\n[Small Police Station > Phi Phi Island]\n",
+            "\n[Small Police Station > Phi Phi Island]\n"
         },
         nil,
         {
@@ -1400,7 +1403,7 @@ function Season37()
             "checkbox",
             "checkbox",
             "checkbox",
-            "checkbox",
+            "checkbox"
         }
     )
     if Season37Checkbox == nil then
