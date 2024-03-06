@@ -10,6 +10,7 @@ local GameVersion = "1.53.7.122261"
 local ScriptVersion = "0.10.2-dev"
 local ScriptDescription =
     "[SimCity BuildIt " .. GameVersion .. " " .. ArchInfoResult .. " bit | Mioscape SimCity v" .. ScriptVersion .. "]"
+    
 if gg.getTargetInfo().versionName == GameVersion then
 else
     gg.alert("WARNING: Game update detected. This script is made for SimCity BuildIt " .. GameVersion .. " only. Some pointers cant be work! Be carefully.")
