@@ -10,6 +10,10 @@ local GameVersion = "1.53.7.122261"
 local ScriptVersion = "0.10.2-dev"
 local ScriptDescription =
     "[SimCity BuildIt " .. GameVersion .. " " .. ArchInfoResult .. " bit | Mioscape SimCity v" .. ScriptVersion .. "]"
+if gg.getTargetInfo().versionName == GameVersion then
+else
+    gg.alert("WARNING: Game update detected. This script is made for SimCity BuildIt " .. GameVersion .. " only. Some pointers cant be work! Be carefully.")
+end
 
 local FactoryValue = "-1935981107"
 local VuPassValue = "-7995824390300544013"
@@ -916,6 +920,7 @@ function MayorPassBuilding()
                     "\n[Season 36 | Lapland of Today]\n",
                     "\n[Season 35 | Super Services]\n",
                     "\n[Season 34 | Tokyo]\n",
+                    "\n[Season 33 | London]\n",
                     "\n[Back]\n"
                 },
                 nil,
@@ -939,11 +944,116 @@ function MayorPassBuilding()
                     Alert(SeasonBuildingAlert, "Next", "Cancel", Season34, MayorPassBuilding)
                 end
                 if MENU == 6 then
+                    Alert(SeasonBuildingAlert, "Next", "Cancel", Season33, MayorPassBuilding)
+                end
+                if MENU == 7 then
                     Arm64v8aBuilding()
                 end
             end
         end
         MIO = -1
+    end
+end
+
+function Season33()
+    local Season33Checkbox =
+        gg.prompt(
+        {
+            "\n[Wind Power Plant > Columbia Road Flower Market]\n",
+            "\n[Basic Water Tower > Red House]\n",
+            "\n[Small Sewage Outflow Pipe > Fragment]\n",
+            "\n[Small Garbage Dump > Kensington Palace]\n",
+            "\n[Small Fire Station > Westminster Abbey]\n",
+            "\n[Small Police Station > Tower Bridge]\n",
+            "\n[Small Health Clinic > Tower of London]\n",
+            "\n[Small Fountain Park > British Museum]\n"
+        },
+        nil,
+        {
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox"
+        }
+    )
+    if Season33Checkbox == nil then
+        gg.toast("Canceled")
+        MayorPassBuilding()
+    else
+        if Season33Checkbox[1] then
+            gg.clearResults()
+            gg.searchNumber(WindPowerPlantValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("-1729576167", gg.TYPE_DWORD)
+            gg.toast("Wind Power Plant > Columbia Road Flower Market")
+        end
+        if Season33Checkbox[2] then
+            gg.clearResults()
+            gg.searchNumber(BasicWaterTowerValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("816337669", gg.TYPE_DWORD)
+            gg.toast("Basic Water Tower > Red House")
+        end
+        if Season33Checkbox[3] then
+            gg.clearResults()
+            gg.searchNumber(SmallSewageOutflowPipeValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("-784692519", gg.TYPE_DWORD)
+            gg.toast("Small Sewage Outflow Pipe > Fragment")
+        end
+        if Season33Checkbox[4] then
+            gg.clearResults()
+            gg.searchNumber(SmallGarbageDumpValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("2069092396", gg.TYPE_DWORD)
+            gg.toast("Small Garbage Dump > Kensington Palace")
+        end
+        if Season33Checkbox[5] then
+            gg.clearResults()
+            gg.searchNumber(SmallFireStationValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("980195054", gg.TYPE_DWORD)
+            gg.toast("Small Fire Station > Westminster Abbey")
+        end
+        if Season33Checkbox[6] then
+            gg.clearResults()
+            gg.searchNumber(SmallPoliceStationValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("1526054020", gg.TYPE_DWORD)
+            gg.toast("Small Police Station > Tower Bridge")
+        end
+        if Season33Checkbox[7] then
+            gg.clearResults()
+            gg.searchNumber(SmallHealthClinicValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("1914030145", gg.TYPE_DWORD)
+            gg.toast("Small Health Clinic > Tower of London")
+        end
+        if Season33Checkbox[8] then
+            gg.clearResults()
+            gg.searchNumber(SmallFountainParkValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("-1460626377", gg.TYPE_DWORD)
+            gg.toast("Small Fountain Park > British Museum")
+        end
+        if
+            Season33Checkbox[1] == false and Season33Checkbox[2] == false and Season33Checkbox[3] == false and
+                Season33Checkbox[4] == false and
+                Season33Checkbox[5] == false and
+                Season33Checkbox[6] == false and
+                Season33Checkbox[7] == false and
+                Season33Checkbox[8] == false
+         then
+            gg.alert("Tick at least one checkbox")
+            UpgradeShopLevel()
+        else
+            gg.sleep(2000)
+            gg.toast("Please Go To Daniel's City")
+        end
     end
 end
 
