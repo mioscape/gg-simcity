@@ -1,9 +1,9 @@
 local ArchInfo64 = gg.getTargetInfo()["x64"]
-if ArchInfo64 == false then
-    ArchInfoResult = 32
-end
 if ArchInfo64 == true then
     ArchInfoResult = 64
+else
+    ArchInfoResult = 32
+    gg.alert("This script is made for 64bit only. Expect some feature not working properly or not working at all.")
 end
 
 local GameVersion = "1.53.7.122261"
