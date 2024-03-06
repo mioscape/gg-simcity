@@ -915,6 +915,7 @@ function MayorPassBuilding()
                     "\n[Season 37 | Thailand]\n",
                     "\n[Season 36 | Lapland of Today]\n",
                     "\n[Season 35 | Super Services]\n",
+                    "\n[Season 34 | Tokyo]\n",
                     "\n[Back]\n"
                 },
                 nil,
@@ -934,12 +935,127 @@ function MayorPassBuilding()
                 if MENU == 4 then
                     Alert(SeasonBuildingAlert, "Next", "Cancel", Season35, MayorPassBuilding)
                 end
-                if MENU == 4 then
+                if MENU == 5 then
+                    Alert(SeasonBuildingAlert, "Next", "Cancel", Season34, MayorPassBuilding)
+                end
+                if MENU == 6 then
                     Arm64v8aBuilding()
                 end
             end
         end
         MIO = -1
+    end
+end
+
+function Season34()
+    local Season34Checkbox =
+        gg.prompt(
+        {
+            "\n[Wind Power Plant > Tokyo Taki Plaza]\n",
+            "\n[Basic Water Tower > Tokyo Shakaden]\n",
+            "\n[Small Sewage Outflow Pipe > Tokyo Akihabara]\n",
+            "\n[Small Garbage Dump > Coffin House]\n",
+            "\n[Small Fire Station > Witch Tree House]\n",
+            "\n[Small Police Station > Pumpkin Balloon]\n",
+            "\n[Small Health Clinic > Chomper Backyard]\n",
+            "\n[Small Fountain Park > Museum Land Beach M]\n",
+            "\n[Coal Power Plant > Thanksgiving Fields]\n"
+        },
+        nil,
+        {
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox",
+            "checkbox"
+        }
+    )
+    if Season34Checkbox == nil then
+        gg.toast("Canceled")
+        MayorPassBuilding()
+    else
+        if Season34Checkbox[1] then
+            gg.clearResults()
+            gg.searchNumber(WindPowerPlantValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("614170228", gg.TYPE_DWORD)
+            gg.toast("Wind Power Plant > Tokyo Taki Plaza")
+        end
+        if Season34Checkbox[2] then
+            gg.clearResults()
+            gg.searchNumber(BasicWaterTowerValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("-1854842861", gg.TYPE_DWORD)
+            gg.toast("Basic Water Tower > Tokyo Shakaden")
+        end
+        if Season34Checkbox[3] then
+            gg.clearResults()
+            gg.searchNumber(SmallSewageOutflowPipeValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("-1267520952", gg.TYPE_DWORD)
+            gg.toast("Small Sewage Outflow Pipe > Tokyo Akihabara")
+        end
+        if Season34Checkbox[4] then
+            gg.clearResults()
+            gg.searchNumber(SmallGarbageDumpValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("243322819", gg.TYPE_DWORD)
+            gg.toast("Small Garbage Dump > Coffin House")
+        end
+        if Season34Checkbox[5] then
+            gg.clearResults()
+            gg.searchNumber(SmallFireStationValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("367631164", gg.TYPE_DWORD)
+            gg.toast("Small Fire Station > Witch Tree House")
+        end
+        if Season34Checkbox[6] then
+            gg.clearResults()
+            gg.searchNumber(SmallPoliceStationValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("391362933", gg.TYPE_DWORD)
+            gg.toast("Small Police Station > Pumpkin Balloon")
+        end
+        if Season34Checkbox[7] then
+            gg.clearResults()
+            gg.searchNumber(SmallHealthClinicValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("1420845900", gg.TYPE_DWORD)
+            gg.toast("Small Health Clinic > Chomper Backyard")
+        end
+        if Season34Checkbox[8] then
+            gg.clearResults()
+            gg.searchNumber(SmallFountainParkValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("275335866", gg.TYPE_DWORD)
+            gg.toast("Small Fountain Park > Museum Land Beach M")
+        end
+        if Season34Checkbox[9] then
+            gg.clearResults()
+            gg.searchNumber(CoalPowerPlantValue, gg.TYPE_DWORD)
+            gg.getResults(200)
+            gg.editAll("404044642", gg.TYPE_DWORD)
+            gg.toast("Coal Power Plant > Thanksgiving Fields")
+        end
+        if
+            Season34Checkbox[1] == false and Season34Checkbox[2] == false and Season34Checkbox[3] == false and
+                Season34Checkbox[4] == false and
+                Season34Checkbox[5] == false and
+                Season34Checkbox[6] == false and
+                Season34Checkbox[7] == false and
+                Season34Checkbox[8] == false and
+                Season34Checkbox[9] == false
+         then
+            gg.alert("Tick at least one checkbox")
+            UpgradeShopLevel()
+        else
+            gg.sleep(2000)
+            gg.toast("Please Go To Daniel's City")
+        end
     end
 end
 
@@ -977,56 +1093,56 @@ function Season35()
             gg.searchNumber(WindPowerPlantValue, gg.TYPE_DWORD)
             gg.getResults(200)
             gg.editAll("-1415031566", gg.TYPE_DWORD)
-            gg.toast("Wind Power Plant > Nordic Church")
+            gg.toast("Wind Power Plant > Garbage Incinerator V2")
         end
         if Season35Checkbox[2] then
             gg.clearResults()
             gg.searchNumber(BasicWaterTowerValue, gg.TYPE_DWORD)
             gg.getResults(200)
             gg.editAll("-12118106", gg.TYPE_DWORD)
-            gg.toast("Basic Water Tower > Northern Museum")
+            gg.toast("Basic Water Tower > Sewage Plant V2")
         end
         if Season35Checkbox[3] then
             gg.clearResults()
             gg.searchNumber(SmallSewageOutflowPipeValue, gg.TYPE_DWORD)
             gg.getResults(200)
             gg.editAll("-747375459", gg.TYPE_DWORD)
-            gg.toast("Small Sewage Outflow Pipe > Arctic Aquarium")
+            gg.toast("Small Sewage Outflow Pipe > Solar Power Farm V1")
         end
         if Season35Checkbox[4] then
             gg.clearResults()
             gg.searchNumber(SmallGarbageDumpValue, gg.TYPE_DWORD)
             gg.getResults(200)
             gg.editAll("1575952079", gg.TYPE_DWORD)
-            gg.toast("Small Garbage Dump > Lofoten")
+            gg.toast("Small Garbage Dump > Water Pumping Station V2")
         end
         if Season35Checkbox[5] then
             gg.clearResults()
             gg.searchNumber(SmallFireStationValue, gg.TYPE_DWORD)
             gg.getResults(200)
             gg.editAll("1840116317", gg.TYPE_DWORD)
-            gg.toast("Small Fire Station > Lean Library")
+            gg.toast("Small Fire Station > Large Fire Station V2")
         end
         if Season35Checkbox[6] then
             gg.clearResults()
             gg.searchNumber(SmallPoliceStationValue, gg.TYPE_DWORD)
             gg.getResults(200)
             gg.editAll("898048097", gg.TYPE_DWORD)
-            gg.toast("Small Police Station > Treehouse Resort")
+            gg.toast("Small Police Station > Police Precinct V2")
         end
         if Season35Checkbox[7] then
             gg.clearResults()
             gg.searchNumber(SmallHealthClinicValue, gg.TYPE_DWORD)
             gg.getResults(200)
             gg.editAll("850245360", gg.TYPE_DWORD)
-            gg.toast("Small Health Clinic > Reindeer Sled Ride")
+            gg.toast("Small Health Clinic > Hospital V2")
         end
         if Season35Checkbox[8] then
             gg.clearResults()
             gg.searchNumber(SmallFountainParkValue, gg.TYPE_DWORD)
             gg.getResults(200)
             gg.editAll("1579400415", gg.TYPE_DWORD)
-            gg.toast("Small Fountain Park > Swimming Sauna")
+            gg.toast("Small Fountain Park > Maxis HQ")
         end
         if
             Season35Checkbox[1] == false and Season35Checkbox[2] == false and Season35Checkbox[3] == false and
