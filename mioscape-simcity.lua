@@ -9,7 +9,7 @@ end
 local GameVersion = "1.53.7.122261"
 local ScriptVersion = "0.11.0-dev"
 local ScriptDescription =
-    "[SimCity BuildIt " .. GameVersion .. " " .. ArchInfoResult .. " bit | Mioscape SimCity v" .. ScriptVersion .. "]"
+    "[Intended for SimCity BuildIt " .. GameVersion .. " " .. ArchInfoResult .. " bit | Mioscape SimCity v" .. ScriptVersion .. "]"
 
 if gg.getTargetInfo().versionName == GameVersion then
 else
@@ -36,33 +36,6 @@ local SmallHealthClinicValue = "-1568621139"
 local SmallFountainParkValue = "-278168705"
 local CoalPowerPlantValue = "960415804"
 local SolarPowerPlantValue = "43959869"
-
-local TAMAN = "4635382469820688998"
-local ITEMOFFSET = "-3527480595996367819"
-local OFFSET1 = "0x60"
-local OFFSET2 = "0x40"
-local EDUKASI = "-1881032548"
-local HIBURAN = "-447372290"
-local PERJUDIAN = "-691412735"
-local TRANSPORT = "1813794920"
-local TERKENAL = "-113962678"
-local PANTAI = "-1999290445"
-local GUNUNG = "995463179"
-
-local RUMAH = "1522778650"
-local LATIN = "-537490833"
-local ART = "1920513178"
-local PARIS = "2050186616"
-local LONDON = "-1203406301"
-local OLD = "-1562421476"
-local TOKYO = "1493262871"
-local OMEGA = "-1430868908"
-
-local GREEN = "973877747"
-local CANYON = "-1528167776"
-local ISLAND = "-1220248775"
-local FROZEN = "-2038647854"
-local LIMINSTONE = "46404375"
 
 local DefaultAlert = "Apakah kamu yakin ingin melanjutkan?\n-----\nAre you sure you want to continue?"
 local MaxCityStorageMenuAlert =
