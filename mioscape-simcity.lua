@@ -7,7 +7,7 @@ else
 end
 
 local GameVersion = "1.53.7.122261"
-local ScriptVersion = "0.11.1-dev"
+local ScriptVersion = "0.12.0-dev"
 local ScriptDescription =
     "[Intended for SimCity BuildIt " ..
     GameVersion .. " " .. ArchInfoResult .. " bit | Mioscape SimCity v" .. ScriptVersion .. "]"
