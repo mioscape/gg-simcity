@@ -1006,7 +1006,7 @@ function FreezeResourcesMenu()
             o5[1].flags = gg.TYPE_DWORD
             gg.addListItems(o5)
         end
-        if MENU == 1 then 
+        if MENU == 1 then
             if fXp == "Enabled " then
                 FPLC = 1
                 gg.sleep(100)
@@ -1240,68 +1240,68 @@ end
 
 function Arm64v8aBuilding()
     ZIndex = 3
-            MENU =
-                gg.choice(
-                {
-                    "\n[Mayor Pass Building]\n",
-                    "\n[Back]\n"
-                },
-                nil,
-                ScriptDescription
-            )
-            if MENU == nil then
-            else
-                if MENU == 1 then
-                    ZIndex = 4
-                    MayorPassBuilding()
-                end
-                if MENU == 2 then
-                    Main()
-                end
-            end
+    MENU =
+        gg.choice(
+        {
+            "\n[Mayor Pass Building]\n",
+            "\n[Back]\n"
+        },
+        nil,
+        ScriptDescription
+    )
+    if MENU == nil then
+    else
+        if MENU == 1 then
+            ZIndex = 4
+            MayorPassBuilding()
         end
+        if MENU == 2 then
+            Main()
+        end
+    end
+end
 
 function MayorPassBuilding()
     ZIndex = 4
-            MENU =
-                gg.choice(
-                {
-                    "\n[Season 38 | Historic Prague]\n",
-                    "\n[Season 37 | Thailand]\n",
-                    "\n[Season 36 | Lapland of Today]\n",
-                    "\n[Season 35 | Super Services]\n",
-                    "\n[Season 34 | Tokyo]\n",
-                    "\n[Season 33 | London]\n",
-                    "\n[Back]\n"
-                },
-                nil,
-                ScriptDescription
-            )
-            if MENU == nil then
-            else
-                if MENU == 1 then
-                    Alert(SeasonBuildingAlert, "Next", "Cancel", Season38, MayorPassBuilding)
-                end
-                if MENU == 2 then
-                    Alert(SeasonBuildingAlert, "Next", "Cancel", Season37, MayorPassBuilding)
-                end
-                if MENU == 3 then
-                    Alert(SeasonBuildingAlert, "Next", "Cancel", Season36, MayorPassBuilding)
-                end
-                if MENU == 4 then
-                    Alert(SeasonBuildingAlert, "Next", "Cancel", Season35, MayorPassBuilding)
-                end
-                if MENU == 5 then
-                    Alert(SeasonBuildingAlert, "Next", "Cancel", Season34, MayorPassBuilding)
-                end
-                if MENU == 6 then
-                    Alert(SeasonBuildingAlert, "Next", "Cancel", Season33, MayorPassBuilding)
-                end
-                if MENU == 7 then
-                    Arm64v8aBuilding()
-                end
-            end
+    MENU =
+        gg.choice(
+        {
+            "\n[Season 38 | Historic Prague]\n",
+            "\n[Season 37 | Thailand]\n",
+            "\n[Season 36 | Lapland of Today]\n",
+            "\n[Season 35 | Super Services]\n",
+            "\n[Season 34 | Tokyo]\n",
+            "\n[Season 33 | London]\n",
+            "\n[Back]\n"
+        },
+        nil,
+        ScriptDescription
+    )
+    if MENU == nil then
+    else
+        if MENU == 1 then
+            Alert(SeasonBuildingAlert, "Next", "Cancel", Season38, MayorPassBuilding)
         end
+        if MENU == 2 then
+            Alert(SeasonBuildingAlert, "Next", "Cancel", Season37, MayorPassBuilding)
+        end
+        if MENU == 3 then
+            Alert(SeasonBuildingAlert, "Next", "Cancel", Season36, MayorPassBuilding)
+        end
+        if MENU == 4 then
+            Alert(SeasonBuildingAlert, "Next", "Cancel", Season35, MayorPassBuilding)
+        end
+        if MENU == 5 then
+            Alert(SeasonBuildingAlert, "Next", "Cancel", Season34, MayorPassBuilding)
+        end
+        if MENU == 6 then
+            Alert(SeasonBuildingAlert, "Next", "Cancel", Season33, MayorPassBuilding)
+        end
+        if MENU == 7 then
+            Arm64v8aBuilding()
+        end
+    end
+end
 
 function Season33()
     local Season33Checkbox =
