@@ -7,7 +7,7 @@ else
 end
 
 local GameVersion = "1.53.7.122261"
-local ScriptVersion = "0.11.0-dev"
+local ScriptVersion = "0.11.1-dev"
 local ScriptDescription =
     "[Intended for SimCity BuildIt " .. GameVersion .. " " .. ArchInfoResult .. " bit | Mioscape SimCity v" .. ScriptVersion .. "]"
 
@@ -31,10 +31,10 @@ local BasicWaterTowerValue = "139346164"
 local SmallSewageOutflowPipeValue = "182280403"
 local SmallGarbageDumpValue = "-741284489"
 local SmallFireStationValue = "583140736"
-local SmallPoliceStationValue = "-1470979549"
-local SmallHealthClinicValue = "-1568621139"
-local SmallFountainParkValue = "-278168705"
-local CoalPowerPlantValue = "960415804"
+local SmallPoliceStationValue = "-150077002"
+local SmallHealthClinicValue = "-66177429"
+local SmallFountainParkValue = "-1672104106"
+local CoalPowerPlantValue = "-1297331478"
 local SolarPowerPlantValue = "43959869"
 
 local DefaultAlert = "Apakah kamu yakin ingin melanjutkan?\n-----\nAre you sure you want to continue?"
