@@ -9,7 +9,8 @@ end
 local GameVersion = "1.53.7.122261"
 local ScriptVersion = "0.11.1-dev"
 local ScriptDescription =
-    "[Intended for SimCity BuildIt " .. GameVersion .. " " .. ArchInfoResult .. " bit | Mioscape SimCity v" .. ScriptVersion .. "]"
+    "[Intended for SimCity BuildIt " ..
+    GameVersion .. " " .. ArchInfoResult .. " bit | Mioscape SimCity v" .. ScriptVersion .. "]"
 
 if gg.getTargetInfo().versionName == GameVersion then
 else
@@ -18,6 +19,20 @@ else
             GameVersion .. " only. Some pointers cant be work! Be carefully."
     )
 end
+
+local ZIndex = {}
+local fXp = {}
+local fSmo = {}
+local fSmc = {}
+local fGk = {}
+local fPk = {}
+local fNsm = {}
+fXp = "Disabled "
+fSmo = "Disabled "
+fSmc = "Disabled "
+fGk = "Disabled "
+fPk = "Disabled "
+fNsm = "Disabled "
 
 local FactoryValue = "-1935981107"
 local VuPassValue = "-7995824390300544013"
@@ -52,6 +67,12 @@ local PopulationNewResidentialZoneAlert =
     "10.000.000 Populasi dari Membangun Bangunan Baru Zona Residensial. Tidak Permanen, akan reset setelah login ulang.\n-----\n10.000.000 Population from Building New Residential Zone. It's not permanent, it will reset after re-login."
 local SeasonBuildingAlert =
     "Pastikan Anda hanya menaruh tempat yang ingin diganti\n-----\nMake sure you only put the thing you want to change"
+local FreezeResourcesMenuAlert =
+    "Supaya lebih aman, gunakan fitur ini saat offline\n-----\nFor more safety, use this feature while offline"
+
+function ValueNotFound()
+    gg.alert("ERROR (Code: 46): Searched value is not found.")
+end
 
 gg.setRanges(gg.REGION_C_HEAP | gg.REGION_OTHER | gg.REGION_C_ALLOC)
 function GGPrompt(title)
@@ -90,129 +111,119 @@ function Alert(message, trueButton, falseButton, trueFunction, falseFunction)
 end
 
 function Main()
-    while true do
-        if gg.isVisible(true) then
-            MIO = 1
-            gg.setVisible(false)
+    ZIndex = 1
+    MENU =
+        gg.choice(
+        {
+            "\n[SimCity General]\n",
+            "\n[SimCity Building]\n",
+            "\n[Back to Loader]\n"
+        },
+        nil,
+        ScriptDescription
+    )
+    if MENU == nil then
+    else
+        if MENU == 1 then
+            ZIndex = 2
+            Arm64v8a()
         end
-        if MIO == 1 then
-            MENU =
-                gg.choice(
-                {
-                    "\n[SimCity General]\n",
-                    "\n[SimCity Building]\n",
-                    "\n[Back to Loader]\n"
-                },
-                nil,
-                ScriptDescription
-            )
-            if MENU == nil then
+        if MENU == 2 then
+            ZIndex = 3
+            Arm64v8aBuilding()
+        end
+        if MENU == 3 then
+            TG = gg.makeRequest("https://ihya.dev/gg-loader/mioscape-loader.lua").content
+            if not TG then
+                os.exit()
             else
-                if MENU == 1 then
-                    Arm64v8a()
-                end
-                if MENU == 2 then
-                    Arm64v8aBuilding()
-                end
-                if MENU == 3 then
-                    TG = gg.makeRequest("https://ihya.dev/gg-loader/mioscape-loader.lua").content
-                    if not TG then
-                        os.exit()
-                    else
-                        pcall(load(TG))
-                    end
-                end
+                pcall(load(TG))
             end
         end
-        MIO = -1
     end
 end
 
 -- arm64-v8a | 64bit Start
 
 function Arm64v8a()
-    while true do
-        if gg.isVisible(true) then
-            MIO = 1
-            gg.setVisible(false)
+    ZIndex = 2
+    MENU =
+        gg.choice(
+        {
+            "\n[Max City Storage]\n",
+            "\n[Max Omega Storage]\n",
+            "\n[Max Neo Bank]\n",
+            "\n[Experience from Metal]\n",
+            "\n[Omega Services]\n",
+            "\n[Unlock Neo Mall]\n",
+            "\n[Unlock Air Port]\n",
+            "\n[Unlock Vu's Tower Max Level]\n",
+            "\n[Unlock Cargo Ship]\n",
+            "\n[Unlock Vu's Pass]\n",
+            "\n[Unlock Mayor Pass]\n",
+            "\n[Upgrade Shop Building]\n",
+            "\n[Instant Production Time & Exclude Item Requirement]\n",
+            "\n[Buldozing & Keeping Restricted Building]\n",
+            "\n[10.000.000 Population from New Residential Zone]\n",
+            "\n[NEW!] | [Freeze Resources]\n",
+            "\n[Back]\n"
+        },
+        nil,
+        ScriptDescription
+    )
+    if MENU == nil then
+    else
+        if MENU == 1 then
+            Alert(MaxCityStorageMenuAlert, "Next", "Cancel", CityStorage, Arm64v8a)
         end
-        if MIO == 1 then
-            MENU =
-                gg.choice(
-                {
-                    "\n[Max City Storage]\n",
-                    "\n[Max Omega Storage]\n",
-                    "\n[Max Neo Bank]\n",
-                    "\n[Experience from Metal]\n",
-                    "\n[Omega Services]\n",
-                    "\n[Unlock Neo Mall]\n",
-                    "\n[Unlock Air Port]\n",
-                    "\n[Unlock Vu's Tower Max Level]\n",
-                    "\n[Unlock Cargo Ship]\n",
-                    "\n[Unlock Vu's Pass]\n",
-                    "\n[Unlock Mayor Pass]\n",
-                    "\n[Upgrade Shop Building]\n",
-                    "\n[Instant Production Time & Exclude Item Requirement]\n",
-                    "\n[NEW!] | [Buldozing & Keeping Restricted Building]\n",
-                    "\n[NEW!] | [10.000.000 Population from New Residential Zone]\n",
-                    "\n[Back]\n"
-                },
-                nil,
-                ScriptDescription
-            )
-            if MENU == nil then
-            else
-                if MENU == 1 then
-                    Alert(MaxCityStorageMenuAlert, "Next", "Cancel", CityStorage, Arm64v8a)
-                end
-                if MENU == 2 then
-                    Alert(MaxOmegaStorageMenuAlert, "Next", "Cancel", OmegaStorage, Arm64v8a)
-                end
-                if MENU == 3 then
-                    Alert(MaxNeoBankMenuAlert, "Next", "Cancel", NeoBank, Arm64v8a)
-                end
-                if MENU == 4 then
-                    Alert(ExpfromMetalMenuAlert, "Next", "Cancel", ExpfromMetal, Arm64v8a)
-                end
-                if MENU == 5 then
-                    OmegaServices()
-                end
-                if MENU == 6 then
-                    Alert(DefaultAlert, "Next", "Cancel", NeoMall, Arm64v8a)
-                end
-                if MENU == 7 then
-                    Alert(DefaultAlert, "Next", "Cancel", AirPort, Arm64v8a)
-                end
-                if MENU == 8 then
-                    Alert(DefaultAlert, "Next", "Cancel", VuTower, Arm64v8a)
-                end
-                if MENU == 9 then
-                    Alert(DefaultAlert, "Next", "Cancel", CargoShip, Arm64v8a)
-                end
-                if MENU == 10 then
-                    Alert(DefaultAlert, "Next", "Cancel", VuPass, Arm64v8a)
-                end
-                if MENU == 11 then
-                    Alert(MayorPassMenuAlert, "Next", "Cancel", MayorPass, Arm64v8a)
-                end
-                if MENU == 12 then
-                    UpgradeShopLevel()
-                end
-                if MENU == 13 then
-                    Alert(DefaultAlert, "Next", "Cancel", InstantProductionTime, Arm64v8a)
-                end
-                if MENU == 14 then
-                    Alert(DefaultAlert, "Next", "Cancel", BuldozingKeepingRestrictedBuilding, Arm64v8a)
-                end
-                if MENU == 15 then
-                    Alert(PopulationNewResidentialZoneAlert, "Next", "Cancel", PopulationNewResidentialZone, Arm64v8a)
-                end
-                if MENU == 16 then
-                    Main()
-                end
-            end
+        if MENU == 2 then
+            Alert(MaxOmegaStorageMenuAlert, "Next", "Cancel", OmegaStorage, Arm64v8a)
         end
-        MIO = -1
+        if MENU == 3 then
+            Alert(MaxNeoBankMenuAlert, "Next", "Cancel", NeoBank, Arm64v8a)
+        end
+        if MENU == 4 then
+            Alert(ExpfromMetalMenuAlert, "Next", "Cancel", ExpfromMetal, Arm64v8a)
+        end
+        if MENU == 5 then
+            OmegaServices()
+        end
+        if MENU == 6 then
+            Alert(DefaultAlert, "Next", "Cancel", NeoMall, Arm64v8a)
+        end
+        if MENU == 7 then
+            Alert(DefaultAlert, "Next", "Cancel", AirPort, Arm64v8a)
+        end
+        if MENU == 8 then
+            Alert(DefaultAlert, "Next", "Cancel", VuTower, Arm64v8a)
+        end
+        if MENU == 9 then
+            Alert(DefaultAlert, "Next", "Cancel", CargoShip, Arm64v8a)
+        end
+        if MENU == 10 then
+            Alert(DefaultAlert, "Next", "Cancel", VuPass, Arm64v8a)
+        end
+        if MENU == 11 then
+            Alert(MayorPassMenuAlert, "Next", "Cancel", MayorPass, Arm64v8a)
+        end
+        if MENU == 12 then
+            UpgradeShopLevel()
+        end
+        if MENU == 13 then
+            Alert(DefaultAlert, "Next", "Cancel", InstantProductionTime, Arm64v8a)
+        end
+        if MENU == 14 then
+            Alert(DefaultAlert, "Next", "Cancel", BuldozingKeepingRestrictedBuilding, Arm64v8a)
+        end
+        if MENU == 15 then
+            Alert(PopulationNewResidentialZoneAlert, "Next", "Cancel", PopulationNewResidentialZone, Arm64v8a)
+        end
+        if MENU == 16 then
+            Alert(FreezeResourcesMenuAlert, "Next", "Cancel", FreezeResourcesMenuInit, Arm64v8a)
+        end
+        if MENU == 17 then
+            Main()
+        end
     end
 end
 
@@ -800,7 +811,7 @@ function BuldozingKeepingRestrictedBuilding()
 
     gg.sleep(1000)
     gg.clearList()
-    gg.toast("Buldozer Succes")
+    gg.toast("Buldozer Success")
 end
 
 function PopulationNewResidentialZone()
@@ -840,13 +851,395 @@ function PopulationNewResidentialZone()
     gg.clearList()
 end
 
-function Arm64v8aBuilding()
-    while true do
-        if gg.isVisible(true) then
-            MIO = 1
-            gg.setVisible(false)
+function FreezeResourcesMenuInit()
+    gg.toast("\nFreeze mode loading...")
+    gg.clearResults()
+    gg.clearList()
+    gg.setRanges(gg.REGION_C_ALLOC)
+    gg.searchNumber("-288", gg.TYPE_DWORD)
+    gg.sleep(100)
+    if gg.getResultsCount() == 0 then
+        ValueNotFound()
+        return
+    end
+    G7 = gg.getResults(3)
+    local o3 = {}
+    o3[1] = {}
+    o3[1].address = G7[3].address + 0x10
+    o3[1].flags = gg.TYPE_DWORD
+    gg.addListItems(o3)
+    gg.setRanges(gg.REGION_C_ALLOC | gg.REGION_OTHER)
+    gg.clearResults()
+    G8 = gg.getListItems("1")
+    gg.searchNumber(G8[1].address, gg.TYPE_QWORD)
+    gg.clearList()
+    local lofs = {}
+    g9 = gg.getResults("1")
+    function LoadResources()
+        gg.setVisible(false)
+        local o4 = {}
+        o4[1] = {}
+        o4[1].address = g9[1].address + lofs
+        o4[1].flags = gg.TYPE_DWORD
+        gg.addListItems(o4)
+    end
+    --xp
+    lofs = -0xbc
+    gg.sleep("100")
+    LoadResources()
+    lofs = -0xc0
+    gg.sleep("100")
+    LoadResources()
+    lofs = -0xc4
+    gg.sleep("100")
+    LoadResources()
+    lofs = -0xc8
+    gg.sleep("100")
+    LoadResources()
+    --simoleon
+    lofs = 0x168
+    gg.sleep("100")
+    LoadResources()
+    lofs = 0x16c
+    gg.sleep("100")
+    LoadResources()
+    lofs = 0x170
+    gg.sleep("100")
+    LoadResources()
+    lofs = 0x174
+    gg.sleep("100")
+    LoadResources()
+    --simcash
+    lofs = 0x178
+    gg.sleep("100")
+    LoadResources()
+    lofs = 0x17c
+    gg.sleep("100")
+    LoadResources()
+    lofs = 0x180
+    gg.sleep("100")
+    LoadResources()
+    lofs = 0x184
+    gg.sleep("100")
+    LoadResources()
+    --golden key
+    lofs = 0x188
+    gg.sleep("100")
+    LoadResources()
+    lofs = 0x18c
+    gg.sleep("100")
+    LoadResources()
+    lofs = 0x190
+    gg.sleep("100")
+    LoadResources()
+    lofs = 0x194
+    gg.sleep("100")
+    LoadResources()
+    --platinum key
+    lofs = 0x1a8
+    gg.sleep("100")
+    LoadResources()
+    lofs = 0x1ac
+    gg.sleep("100")
+    LoadResources()
+    lofs = 0x1b0
+    gg.sleep("100")
+    LoadResources()
+    lofs = 0x1b4
+    gg.sleep("100")
+    LoadResources()
+    --neo simoleon
+    lofs = 0x1b8
+    gg.sleep("100")
+    LoadResources()
+    lofs = 0x1bc
+    gg.sleep("100")
+    LoadResources()
+    lofs = 0x1c0
+    gg.sleep("100")
+    LoadResources()
+    lofs = 0x1c4
+    gg.sleep("100")
+    LoadResources()
+    gg.clearResults()
+    gg.sleep("100")
+    G10 = gg.getListItems("24")
+    gg.loadResults(G10)
+    gg.toast("Freeze menu loaded.")
+    ZIndex = 5
+    FreezeResourcesMenu()
+end
+
+function FreezeResourcesMenu()
+    MENU =
+        gg.choice(
+        {
+            "\n[" .. fXp .. "| Experience]\n",
+            "\n[" .. fSmo .. "| Simoleon]\n",
+            "\n[" .. fSmc .. "| SimCash]\n",
+            "\n[" .. fGk .. "| Golden Key]\n",
+            "\n[" .. fPk .. "| Platinum Key]\n",
+            "\n[" .. fNsm .. "| Neo Simoleon]\n",
+            "\n[Back]\n"
+        }
+    )
+
+    if MENU == nil then
+    else
+        local FVLS = {}
+        local FPLC = {}
+        G11 = gg.getResults(24)
+        function FreezeResources()
+            local o5 = {}
+            o5[1] = {}
+            o5[1].address = G11[FPLC].address + 0x0
+            o5[1].flags = gg.TYPE_DWORD
+            o5[1].value = FVLS
+            o5[1].freeze = true
+            gg.addListItems(o5)
+            gg.setValues(o5)
         end
-        if MIO == 1 then
+        function UnFreezeResources()
+            local o5 = {}
+            o5[1] = {}
+            o5[1].address = G11[FPLC].address + 0x0
+            o5[1].flags = gg.TYPE_DWORD
+            gg.addListItems(o5)
+        end
+        if MENU == 1 then 
+            if fXp == "Enabled " then
+                FPLC = 1
+                gg.sleep(100)
+                UnFreezeResources()
+                FPLC = 2
+                gg.sleep(100)
+                UnFreezeResources()
+                FPLC = 3
+                gg.sleep(100)
+                UnFreezeResources()
+                FPLC = 4
+                gg.sleep(100)
+                UnFreezeResources()
+                gg.toast("\nExperience Unfreezed.")
+                fXp = "Disabled "
+            else
+                FPLC = 1
+                FVLS = G11[1].value
+                gg.sleep(100)
+                FreezeResources()
+                FPLC = 2
+                FVLS = G11[2].value
+                gg.sleep(100)
+                FreezeResources()
+                FPLC = 3
+                FVLS = G11[3].value
+                gg.sleep(100)
+                FreezeResources()
+                FPLC = 4
+                FVLS = G11[4].value
+                gg.sleep(100)
+                FreezeResources()
+                gg.toast("\nExperience Freezed")
+                fXp = "Enabled "
+            end
+        end
+        if MENU == 2 then
+            if fSmo == "Enabled " then
+                FPLC = 5
+                gg.sleep(100)
+                UnFreezeResources()
+                FPLC = 6
+                gg.sleep(100)
+                UnFreezeResources()
+                FPLC = 7
+                gg.sleep(100)
+                UnFreezeResources()
+                FPLC = 8
+                gg.sleep(100)
+                UnFreezeResources()
+                gg.toast("\nSimoleon Unfreezed.")
+                fSmo = "Disabled "
+            else
+                FPLC = 5
+                FVLS = G11[5].value
+                gg.sleep(100)
+                FreezeResources()
+                FPLC = 6
+                FVLS = G11[6].value
+                gg.sleep(100)
+                FreezeResources()
+                FPLC = 7
+                FVLS = G11[7].value
+                gg.sleep(100)
+                FreezeResources()
+                FPLC = 8
+                FVLS = G11[8].value
+                gg.sleep(100)
+                FreezeResources()
+                gg.toast("\nSimoleon Freezed")
+                fSmo = "Enabled "
+            end
+        end
+        if MENU == 3 then
+            if fSmc == "Enabled " then
+                FPLC = 9
+                gg.sleep(100)
+                UnFreezeResources()
+                FPLC = 10
+                gg.sleep(100)
+                UnFreezeResources()
+                FPLC = 11
+                gg.sleep(100)
+                UnFreezeResources()
+                FPLC = 12
+                gg.sleep(100)
+                UnFreezeResources()
+                gg.toast("\nSimcash Unfreezed.")
+                fSmc = "Disabled "
+            else
+                FPLC = 9
+                FVLS = G11[9].value
+                gg.sleep(100)
+                FreezeResources()
+                FPLC = 10
+                FVLS = G11[10].value
+                gg.sleep(100)
+                FreezeResources()
+                FPLC = 11
+                FVLS = G11[11].value
+                gg.sleep(100)
+                FreezeResources()
+                FPLC = 12
+                FVLS = G11[12].value
+                gg.sleep(100)
+                FreezeResources()
+                gg.toast("\nSimcash Freezed")
+                fSmc = "Enabled "
+            end
+        end
+        if MENU == 4 then
+            if fGk == "Enabled " then
+                FPLC = 13
+                gg.sleep(100)
+                UnFreezeResources()
+                FPLC = 14
+                gg.sleep(100)
+                UnFreezeResources()
+                FPLC = 15
+                gg.sleep(100)
+                UnFreezeResources()
+                FPLC = 16
+                gg.sleep(100)
+                UnFreezeResources()
+                gg.toast("\nGolden Key Unfreezed.")
+                fGk = "Disabled "
+            else
+                FPLC = 13
+                FVLS = G11[13].value
+                gg.sleep(100)
+                FreezeResources()
+                FPLC = 14
+                FVLS = G11[14].value
+                gg.sleep(100)
+                FreezeResources()
+                FPLC = 15
+                FVLS = G11[15].value
+                gg.sleep(100)
+                FreezeResources()
+                FPLC = 16
+                FVLS = G11[16].value
+                gg.sleep(100)
+                FreezeResources()
+                gg.toast("\nGolden Key Freezed")
+                fGk = "Enabled "
+            end
+        end
+        if MENU == 5 then
+            if fPk == "Enabled " then
+                FPLC = 17
+                gg.sleep(100)
+                UnFreezeResources()
+                FPLC = 18
+                gg.sleep(100)
+                UnFreezeResources()
+                FPLC = 19
+                gg.sleep(100)
+                UnFreezeResources()
+                FPLC = 20
+                gg.sleep(100)
+                UnFreezeResources()
+                gg.toast("\nPlatinum Key Unfreezed.")
+                fPk = "Disabled "
+            else
+                FPLC = 17
+                FVLS = G11[17].value
+                gg.sleep(100)
+                FreezeResources()
+                FPLC = 18
+                FVLS = G11[18].value
+                gg.sleep(100)
+                FreezeResources()
+                FPLC = 19
+                FVLS = G11[19].value
+                gg.sleep(100)
+                FreezeResources()
+                FPLC = 20
+                FVLS = G11[20].value
+                gg.sleep(100)
+                FreezeResources()
+                gg.toast("\nPlatinum Key Freezed")
+                fPk = "Enabled "
+            end
+        end
+        if MENU == 6 then
+            if fNsm == "Enabled " then
+                FPLC = 21
+                gg.sleep(100)
+                UnFreezeResources()
+                FPLC = 22
+                gg.sleep(100)
+                UnFreezeResources()
+                FPLC = 23
+                gg.sleep(100)
+                UnFreezeResources()
+                FPLC = 24
+                gg.sleep(100)
+                UnFreezeResources()
+                gg.toast("\nNeo Simoleon Unfreezed.")
+                fNsm = "Disabled "
+            else
+                FPLC = 21
+                FVLS = G11[21].value
+                gg.sleep(100)
+                FreezeResources()
+                FPLC = 22
+                FVLS = G11[22].value
+                gg.sleep(100)
+                FreezeResources()
+                FPLC = 23
+                FVLS = G11[23].value
+                gg.sleep(100)
+                FreezeResources()
+                FPLC = 24
+                FVLS = G11[24].value
+                gg.sleep(100)
+                FreezeResources()
+                gg.toast("\nNeo Simoleon Freezed")
+                fNsm = "Enabled "
+            end
+        end
+        if MENU == 7 then
+            gg.clearList()
+            gg.clearResults()
+            ZIndex = 2
+            gg.toast("\nFreeze mode disabled.")
+            return
+        end
+    end
+end
+
+function Arm64v8aBuilding()
+    ZIndex = 3
             MENU =
                 gg.choice(
                 {
@@ -859,6 +1252,7 @@ function Arm64v8aBuilding()
             if MENU == nil then
             else
                 if MENU == 1 then
+                    ZIndex = 4
                     MayorPassBuilding()
                 end
                 if MENU == 2 then
@@ -866,17 +1260,9 @@ function Arm64v8aBuilding()
                 end
             end
         end
-        MIO = -1
-    end
-end
 
 function MayorPassBuilding()
-    while true do
-        if gg.isVisible(true) then
-            MIO = 1
-            gg.setVisible(false)
-        end
-        if MIO == 1 then
+    ZIndex = 4
             MENU =
                 gg.choice(
                 {
@@ -916,9 +1302,6 @@ function MayorPassBuilding()
                 end
             end
         end
-        MIO = -1
-    end
-end
 
 function Season33()
     local Season33Checkbox =
@@ -1561,12 +1944,36 @@ end
 
 -- armebi-v7a | 32bit End
 
+ZIndex = 1
 while true do
-    if gg.isVisible(true) then
-        MIO = 1
-        gg.setVisible(false)
+    if ZIndex == 1 then
+        if gg.isVisible(true) then
+            gg.setVisible(false)
+            Main()
+        end
     end
-    if MIO == 1 then
-        Main()
+    if ZIndex == 2 then
+        if gg.isVisible(true) then
+            gg.setVisible(false)
+            Arm64v8a()
+        end
+    end
+    if ZIndex == 3 then
+        if gg.isVisible(true) then
+            gg.setVisible(false)
+            Arm64v8aBuilding()
+        end
+    end
+    if ZIndex == 4 then
+        if gg.isVisible(true) then
+            gg.setVisible(false)
+            MayorPassBuilding()
+        end
+    end
+    if ZIndex == 5 then
+        if gg.isVisible(true) then
+            gg.setVisible(false)
+            FreezeResourcesMenu()
+        end
     end
 end
