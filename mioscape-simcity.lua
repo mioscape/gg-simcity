@@ -6,7 +6,7 @@ else
     gg.alert("This script is made for 64bit only. Expect some feature not working properly or not working at all.")
 end
 
-local GameVersion = "1.53.7.122261"
+local GameVersion = "1.53.8.122639"
 local ScriptVersion = "0.12.0-dev"
 local ScriptDescription =
     "[Intended for SimCity BuildIt " ..
